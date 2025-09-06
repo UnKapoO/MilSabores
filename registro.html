@@ -63,27 +63,33 @@
 
                         <div class="mb-3 mt-3">
                             <label for="nombrecompleto" class="form-label">Nombre completo</label>
-                            <input type="text" class="form-control" id="nombrecompleto"
-                                placeholder="Ingrese nombre y apellido" name="nombrecompleto" required>
+                            <input type="text" onblur="validarNombre()" class="form-control" id="nombrecompleto"
+                                name="nombrecompleto" aria-describedby="nomHelp" placeholder="Wacoldo Soto" required>
+                            <small id="nomHelp" class="form-text text-danger d-none"></small>
                         </div>
 
 
                         <div class="mb-3 mt-3">
                             <label for="email" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="email" placeholder="Ingrese email" name="email"
-                                required>
+                            <input type="email" onblur="validarCorreo()" class="form-control" id="email" name="email"
+                                aria-describedby="emailHelp" placeholder="ejemplo@gmail.com" required>
+                            <small id="emailHelp" class="form-text text-danger d-none"></small>
                         </div>
 
                         <div class="mb-3 mt-3">
                             <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" placeholder="Ingrese contraseña"
-                                name="password" required>
+                            <input type="password" class="form-control" id="password" name="password"
+                                aria-describedby="passHelp" placeholder="Contraseña segura" 
+                                onblur="validarPassword()" required>
+                            <small id="passHelp" class="form-text text-danger d-none"></small>
                         </div>
 
                         <div class="mb-3 mt-3">
                             <label for="repass" class="form-label">Reingrese contraseña</label>
-                            <input type="password" class="form-control" id="repass" placeholder="Reingrese contraseña"
-                                name="repass" required>
+                            <input type="password" class="form-control" id="repass" name="repass"
+                                aria-describedby="repassHelp" placeholder="Reingrese contraseña"
+                                onblur="validarPassword()" required>
+                            <small id="repassHelp" class="form-text text-danger d-none"></small>
                         </div>
 
                         <div class="mb-3 mt-3">
@@ -92,15 +98,16 @@
                                 name="cupon">
                         </div>
 
+                        <div class="mt-2">
+                            <input type="submit" value="Registrar" class="btn btn-danger btn-lg">
+                        </div>
 
 
                     </form>
-
                 </div>
-
-
-
             </div>
+
+            <script src="js/funciones.js"></script>
 
 </body>
 

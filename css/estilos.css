@@ -21,12 +21,36 @@ h1{
     margin-bottom:1rem;
 }
 
+.button-submit{
+
+  background-color: #FFC0CB;
+  border:#5D4037;
+  
+}
+
+
+.logo{
+  width: 60px;
+
+}
+
+
 
 
 .navbar-milsabores{
     background-color: #FFC0CB;
     padding-top:0.5rem;
     text-align: center;
+}
+
+.navbar-menu{
+    background-color:#8B4513;
+    
+
+}
+
+.navbar-menu .nav-link{
+  color:#FFF5E1;
 
 }
 
@@ -35,6 +59,16 @@ h1{
     font-family:Pacifico;
 
 }
+
+.navbar-toggler{
+
+  background-color:#8B4513;
+}
+
+.container{
+  margin-top: 20px;
+}
+
 .pacifico-regular {
   font-family: "Pacifico", cursive;
   font-weight: 400;

@@ -82,7 +82,7 @@
 
                     <form>
                         <fieldset>
-                            <legend>Información Producto</legend>
+                            <legend class="mt-3">Información Producto</legend>
                             <div class="mb-3">
                                 <label for="id-producto" class="form-label">ID</label>
                                 <input type="text" class="form-control" id="id-producto" placeholder="Ej: 001">
@@ -94,11 +94,23 @@
                                     placeholder="Ej: Torta cuadrada">
                             </div>
 
+
                             <div class="mb-3">
-                                <label for="categoria-producto" class="form-label">Categoría</label>
-                                <input type="text" class="form-control" id="categoria-producto"
-                                    placeholder="Ej: Tortas">
+                                <label for="categoria" class="form-label">Categoría</label>
+                                <select class="form-select" id="categoria">
+                                    <option selected disabled>Seleccione una categoría</option>
+                                    <option value="tortas-cuadradas">Tortas Cuadradas</option>
+                                    <option value="tortas-circulares">Tortas Circulares</option>
+                                    <option value="postres-individuales">Postres Individuales</option>
+                                    <option value="producto-sin-azucar">Productos Sin Azúcar</option>
+                                    <option value="pasteleria-tradicional">Pastelería Tradicional</option>
+                                    <option value="producto-sin-gluten">Productos Sin Gluten</option>
+                                    <option value="producto-vegana">Productos Vegana</option>
+                                    <option value="tortas-especiales">Tortas Especiales</option>
+                                    <option value="nueva-categoria">+ Nueva Categoría</option>
+                                </select>
                             </div>
+
 
                             <div class="mb-3">
                                 <label for="descrip-producto" class="form-label">Descripción</label>
@@ -116,11 +128,8 @@
                             </div>
                         </fieldset>
 
-
-
-
                         <fieldset>
-                            <legend>Stock y precio</legend>
+                            <legend class="mt-3">Control de Stock y precio</legend>
 
                             <div class="mb-3">
                                 <label for="stock-producto" class="form-label">Stock</label>
@@ -136,10 +145,37 @@
                                 <label for="desc-producto" class="form-label">Descuento</label>
                                 <input type="number" class="form-control" id="desc-producto" placeholder="">
                             </div>
-
-
-
                         </fieldset>
+
+                        
+
+                        <!-- Modal para crear nueva categoría -->
+                        <div class="modal fade" id="modalCategoria" tabindex="-1" aria-labelledby="modalCategoriaLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalCategoriaLabel">Nueva Categoría</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Cerrar"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <label for="id-nueva-cat" class="form-label">ID</label>
+                                        <input type="text" class="form-control" id="id-nueva-cat" placeholder="Ej: 001">
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-primary"
+                                            id="guardarCategoria">Guardar</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
 
 
 

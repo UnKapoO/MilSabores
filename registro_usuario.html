@@ -87,7 +87,7 @@
 
 
                         <div class="mb-3 mt-3">
-                            <label for="nombrecompleto" class="form-label">Nombre completo</label>
+                            <label for="nombrecompleto" class="form-label required">Nombre completo</label>
                             <input type="text" onblur="validarNombre()" class="form-control" id="nombrecompleto"
                                 name="nombrecompleto" aria-describedby="nomHelp" placeholder="Wacoldo Soto" required>
                             <small id="nomHelp" class="form-text text-danger d-none"></small>
@@ -95,14 +95,14 @@
 
 
                         <div class="mb-3 mt-3">
-                            <label for="email" class="form-label">E-mail</label>
+                            <label for="email" class="form-label required">E-mail</label>
                             <input type="email" onblur="validarCorreo()" class="form-control" id="email" name="email"
                                 aria-describedby="emailHelp" placeholder="ejemplo@gmail.com" required>
                             <small id="emailHelp" class="form-text text-danger d-none"></small>
                         </div>
 
                         <div class="mb-3 mt-3">
-                            <label for="password" class="form-label">Contraseña</label>
+                            <label for="password" class="form-label required">Contraseña</label>
                             <input type="password" class="form-control" id="password" name="password"
                                 aria-describedby="passHelp" placeholder="Contraseña segura" onblur="validarPassword()"
                                 required>
@@ -110,7 +110,7 @@
                         </div>
 
                         <div class="mb-3 mt-3">
-                            <label for="repass" class="form-label">Reingrese contraseña</label>
+                            <label for="repass" class="form-label required">Reingrese contraseña</label>
                             <input type="password" class="form-control" id="repass" name="repass"
                                 aria-describedby="repassHelp" placeholder="Reingrese contraseña"
                                 onblur="validarPassword()" required>

@@ -82,11 +82,14 @@ function validarPassword() {
     }
 
     //Valida que las contraseñas coincidan
+    //Que la password no este vacia
     if (password.trim() === "") {
         repassHelp.innerHTML = "La contraseña es obligatoria"
         repassHelp.classList.remove("text-success", "d-none");
         repassHelp.classList.add("text-danger");
     }
+
+    //Valida que ambas contraseñas coincidan
     else if (password === repass) {
         repassHelp.innerHTML = "Las contraseñas coinciden ✅";
         repassHelp.classList.remove("text-danger", "d-none");

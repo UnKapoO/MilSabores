@@ -1,0 +1,193 @@
+// Base de datos de productos según las especificaciones del proyecto
+const productosData = [
+  // Tortas Cuadradas
+{
+    codigo: "TC001",
+    categoria: "tortas-cuadradas",
+    nombre: "Torta Cuadrada de Chocolate",
+    precio: 45000,
+    descripcion:
+    "Deliciosa torta de chocolate con capas de ganache y un toque de avellanas. Personalizable con mensajes especiales.",
+    imagen: "/torta-cuadrada-chocolate-ganache.jpg",
+    icono: "fa-solid fa-birthday-cake",
+},
+{
+    codigo: "TC002",
+    categoria: "tortas-cuadradas",
+    nombre: "Torta Cuadrada de Frutas",
+    precio: 50000,
+    descripcion:
+    "Una mezcla de frutas frescas y crema chantilly sobre un suave bizcocho de vainilla, ideal para celebraciones.",
+    imagen: "/torta-cuadrada-frutas-crema-chantilly.jpg",
+    icono: "fa-solid fa-birthday-cake",
+},
+
+// Tortas Circulares
+{
+    codigo: "TT001",
+    categoria: "tortas-circulares",
+    nombre: "Torta Circular de Vainilla",
+    precio: 40000,
+    descripcion:
+    "Bizcocho de vainilla clásico relleno con crema pastelera y cubierto con un glaseado dulce, perfecto para cualquier ocasión.",
+    imagen: "/torta-circular-vainilla-glaseado.jpg",
+    icono: "fa-solid fa-birthday-cake",
+},
+{
+    codigo: "TT002",
+    categoria: "tortas-circulares",
+    nombre: "Torta Circular de Manjar",
+    precio: 42000,
+    descripcion:
+    "Torta tradicional chilena con manjar y nueces, un deleite para los amantes de los sabores dulces y clásicos.",
+    imagen: "/torta-circular-manjar-nueces-chilena.jpg",
+    icono: "fa-solid fa-birthday-cake",
+},
+
+// Postres Individuales
+{
+    codigo: "PI001",
+    categoria: "postres-individuales",
+    nombre: "Mousse de Chocolate",
+    precio: 5000,
+    descripcion:
+    "Postre individual cremoso y suave, hecho con chocolate de alta calidad, ideal para los amantes del chocolate.",
+    imagen: "/mousse-chocolate-cremoso-individual.jpg",
+    icono: "fa-solid fa-ice-cream",
+},
+{
+    codigo: "PI002",
+    categoria: "postres-individuales",
+    nombre: "Tiramisú Clásico",
+    precio: 5500,
+    descripcion:
+    "Un postre italiano individual con capas de café, mascarpone y cacao, perfecto para finalizar cualquier comida.",
+    imagen: "/tiramisu-italiano-cafe-mascarpone.jpg",
+    icono: "fa-solid fa-ice-cream",
+},
+
+  // Productos Sin Azúcar
+{
+    codigo: "PSA001",
+    categoria: "sin-azucar",
+    nombre: "Torta Sin Azúcar de Naranja",
+    precio: 48000,
+    descripcion: "Torta ligera y deliciosa, endulzada naturalmente, ideal para quienes buscan opciones más saludables.",
+    imagen: "/torta-naranja-sin-azucar-saludable.jpg",
+    icono: "fa-solid fa-leaf",
+},
+{
+    codigo: "PSA002",
+    categoria: "sin-azucar",
+    nombre: "Cheesecake Sin Azúcar",
+    precio: 47000,
+    descripcion: "Suave y cremoso, este cheesecake es una opción perfecta para disfrutar sin culpa.",
+    imagen: "/placeholder-yxqnl.png",
+    icono: "fa-solid fa-leaf",
+},
+
+  // Pastelería Tradicional
+{
+    codigo: "PT001",
+    categoria: "tradicional",
+    nombre: "Empanada de Manzana",
+    precio: 3000,
+    descripcion: "Pastelería tradicional rellena de manzanas especiadas, perfecta para un dulce desayuno o merienda.",
+    imagen: "/placeholder-ez80m.png",
+    icono: "fa-solid fa-bread-slice",
+},
+{
+    codigo: "PT002",
+    categoria: "tradicional",
+    nombre: "Tarta de Santiago",
+    precio: 6000,
+    descripcion:
+    "Tradicional tarta española hecha con almendras, azúcar, y huevos, una delicia para los amantes de los postres clásicos.",
+    imagen: "/tarta-santiago-almendras-espa-ola.jpg",
+    icono: "fa-solid fa-bread-slice",
+},
+
+  // Productos Sin Gluten
+{
+    codigo: "PG001",
+    categoria: "sin-gluten",
+    nombre: "Brownie Sin Gluten",
+    precio: 4000,
+    descripcion:
+    "Rico y denso, este brownie es perfecto para quienes necesitan evitar el gluten sin sacrificar el sabor.",
+    imagen: "/brownie-sin-gluten-denso-chocolate.jpg",
+    icono: "fa-solid fa-wheat-awn-circle-exclamation",  },
+{
+    codigo: "PG002",
+    categoria: "sin-gluten",
+    nombre: "Pan Sin Gluten",
+    precio: 3500,
+    descripcion: "Suave y esponjoso, ideal para sándwiches o para acompañar cualquier comida.",
+    imagen: "/pan-sin-gluten-esponjoso.jpg",
+    icono: "fa-solid fa-wheat-awn-circle-exclamation",
+},
+
+// Productos Vegana
+{
+    codigo: "PV001",
+    categoria: "vegana",
+    nombre: "Torta Vegana de Chocolate",
+    precio: 50000,
+    descripcion: "Torta de chocolate húmeda y deliciosa, hecha sin productos de origen animal, perfecta para veganos.",
+    imagen: "/torta-vegana-chocolate-sin-productos-animales.jpg",
+    icono: "fa-solid fa-seedling",
+},
+{
+    codigo: "PV002",
+    categoria: "vegana",
+    nombre: "Galletas Veganas de Avena",
+    precio: 4500,
+    descripcion: "Crujientes y sabrosas, estas galletas son una excelente opción para un snack saludable y vegano.",
+    imagen: "/galletas-veganas-avena-crujientes.jpg",
+    icono: "fa-solid fa-seedling",
+},
+
+// Tortas Especiales
+{
+    codigo: "TE001",
+    categoria: "especiales",
+    nombre: "Torta Especial de Cumpleaños",
+    precio: 55000,
+    descripcion: "Diseñada especialmente para celebraciones, personalizable con decoraciones y mensajes únicos.",
+    imagen: "/torta-cumplea-os-especial-decorada-personalizada.jpg",
+    icono: "fa-solid fa-gift",
+},
+{
+    codigo: "TE002",
+    categoria: "especiales",
+    nombre: "Torta Especial de Boda",
+    precio: 60000,
+    descripcion: "Elegante y deliciosa, esta torta está diseñada para ser el centro de atención en cualquier boda.",
+    imagen: "/placeholder.svg?height=200&width=300",
+    icono: "fa-solid fa-gift",
+},
+]
+
+// Función para formatear precio en pesos chilenos
+function formatearPrecio(precio) {
+return new Intl.NumberFormat("es-CL", {
+    style: "currency",
+    currency: "CLP",
+    minimumFractionDigits: 0,
+}).format(precio)
+}
+
+// Función para obtener el nombre de la categoría
+function obtenerNombreCategoria(categoria) {
+const categorias = {
+    "tortas-cuadradas": "Tortas Cuadradas",
+    "tortas-circulares": "Tortas Circulares",
+    "postres-individuales": "Postres Individuales",
+    "sin-azucar": "Sin Azúcar",
+    tradicional: "Tradicional",
+    "sin-gluten": "Sin Gluten",
+    vegana: "Vegana",
+    especiales: "Especiales",
+}
+return categorias[categoria] || categoria
+}

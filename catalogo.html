@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pastelería Mil Sabores - Inicio</title>
+    <title>Catálogo - Pastelería 1000 Sabores</title>
 
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Estilos CSS -->
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/catalogo.css">
 </head>
 <body>
-    <!-- Header superior con información de contacto, logo y carrito -->
+    <!-- Nuevo header de dos niveles inspirado en la imagen de referencia -->
     <header class="header-doble">
+        <!-- Header superior con información de contacto, logo y carrito -->
         <div class="header-superior">
             <div class="container">
                 <div class="header-superior-content">
@@ -49,8 +51,8 @@
                 <div class="header-inferior-content">
                     <nav class="navegacion-principal">
                         <ul>
-                            <li><a href="index.html" class="active">INICIO</a></li>
-                            <li><a href="catalogo.html">CATÁLOGO</a></li>
+                            <li><a href="index.html">INICIO</a></li>
+                            <li><a href="catalogo.html" class="active">CATÁLOGO</a></li>
                             <li><a href="#">TORTAS ESPECIALES</a></li>
                             <li><a href="#">SIN AZÚCAR</a></li>
                             <li><a href="#">VEGANO</a></li>
@@ -93,7 +95,68 @@
         </div>
     </header>
 
-    
+    <!-- Contenido principal del catálogo -->
+    <main class="catalogo-main">
+        <div class="container">
+            <!-- Título y descripción -->
+            <section class="catalogo-hero">
+                <h1 class="pacifico-regular">Nuestro Catálogo</h1>
+                <p class="lato-regular">Descubre nuestras deliciosas creaciones, hechas con amor y tradición desde 1975</p>
+            </section>
+
+            <!-- Filtros y búsqueda -->
+            <section class="filtros-section">
+                <div class="filtros-container">
+                    <div class="busqueda">
+                        <input type="text" id="buscar-producto" placeholder="Buscar productos..." class="input-busqueda">
+                        <i class="fa-solid fa-search"></i>
+                    </div>
+                    
+                    <div class="filtros">
+                        <button class="filtro-btn active" data-categoria="todas">Todas</button>
+                        <button class="filtro-btn" data-categoria="tortas-cuadradas">Tortas Cuadradas</button>
+                        <button class="filtro-btn" data-categoria="tortas-circulares">Tortas Circulares</button>
+                        <button class="filtro-btn" data-categoria="postres-individuales">Postres Individuales</button>
+                        <button class="filtro-btn" data-categoria="sin-azucar">Sin Azúcar</button>
+                        <button class="filtro-btn" data-categoria="tradicional">Tradicional</button>
+                        <button class="filtro-btn" data-categoria="sin-gluten">Sin Gluten</button>
+                        <button class="filtro-btn" data-categoria="vegana">Vegana</button>
+                        <button class="filtro-btn" data-categoria="especiales">Especiales</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grid de productos -->
+            <section class="productos-section">
+                <div class="productos-grid" id="productos-grid">
+                    <!-- Los productos se cargarán dinámicamente con JavaScript -->
+                </div>
+                
+                <!-- Mensaje cuando no hay productos -->
+                <div class="no-productos" id="no-productos" style="display: none;">
+                    <i class="fa-solid fa-search"></i>
+                    <h3>No se encontraron productos</h3>
+                    <p>Intenta con otros términos de búsqueda o filtros</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal para detalles del producto -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-body" id="modal-body">
+                <!-- Contenido del modal se carga dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="js/header.js"></script>
+    <script src="js/productos-data.js"></script>
+    <script src="js/catalogo.js"></script>
 </body>
 </html>

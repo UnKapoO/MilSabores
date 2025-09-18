@@ -28,7 +28,8 @@
 body{
     font-family: var(--fuente-principal);
     color: var(--color-letra-cafe) ;
-
+    background-color: #FFF5E1;
+    padding-top: 120px;
 }
 
 /*Por defecto a veces ponen otra fuente, por eso se especifíca*/
@@ -42,6 +43,17 @@ select {
 input{
     border: none;
     outline: none;
+}
+
+
+/*Titulos*/
+
+h2{
+  color: #443029;  
+  font-family: var(--fuente-secundaria);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
 }
 
 /*UTILS*/
@@ -140,4 +152,19 @@ section{
     font-family: "Lato", sans-serif;
     font-weight: 900;
     font-style: italic;
+}
+
+
+/*Botones*/
+
+.btn-agregar-carrito{
+  background-color: #FFC0CB;
+  
+
+}
+
+.btn-agregar-carrito:hover{
+  background-color: #e2687d;
+  color:#443029;
+
 }

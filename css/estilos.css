@@ -84,15 +84,6 @@ fieldset {
 
 
 
-.img-detalle-producto {
-  width: 100%;
-  max-width: 500px;
-  object-fit: cover;    /* recorta sin deformar */
-  aspect-ratio: 4/3;
-  margin-bottom: 20px;
-}
-
-
 .btn-agregar-carrito{
   background-color: #FFC0CB;
   
@@ -105,11 +96,7 @@ fieldset {
 
 }
 
-.btn-ver-detalle{
-  background-color: #FFC0CB;
-  color:#443029;
 
-}
 
 
 

@@ -1,0 +1,21 @@
+.img-recomendado {
+  width: 100%;
+  height: 270px;         /* altura fija */
+  object-fit: cover;     /* recorta la imagen si no encaja */
+  border-radius: 8px;    /* opcional: bordes redondeados */
+}
+
+.img-detalle-producto {
+  width: 100%;
+  max-width: 600px;
+  object-fit: cover;    /* recorta sin deformar */
+  aspect-ratio: 4/3;
+  margin-bottom: 20px;
+}
+
+
+.btn-ver-detalles{
+  background-color: #FFC0CB;
+  color:#443029;
+
+}

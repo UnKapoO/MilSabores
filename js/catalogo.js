@@ -1,75 +1,76 @@
 // Variables globales
 let productosActuales = []
 const carrito = JSON.parse(localStorage.getItem("carrito")) || []
+
 const productosData = [
   // Tortas Cuadradas
-{
+  {
     codigo: "TC001",
     categoria: "tortas-cuadradas",
     nombre: "Torta Cuadrada de Chocolate",
     precio: 45000,
     descripcion:
-    "Deliciosa torta de chocolate con capas de ganache y un toque de avellanas. Personalizable con mensajes especiales.",
+      "Deliciosa torta de chocolate con capas de ganache y un toque de avellanas. Personalizable con mensajes especiales.",
     imagen: "img/torta-cuadrada-chocolate-ganache.jpg",
     icono: "fa-solid fa-birthday-cake",
-},
-{
+  },
+  {
     codigo: "TC002",
     categoria: "tortas-cuadradas",
     nombre: "Torta Cuadrada de Frutas",
     precio: 50000,
     descripcion:
-    "Una mezcla de frutas frescas y crema chantilly sobre un suave bizcocho de vainilla, ideal para celebraciones.",
+      "Una mezcla de frutas frescas y crema chantilly sobre un suave bizcocho de vainilla, ideal para celebraciones.",
     imagen: "img/torta-cuadrada-frutas-crema-chantilly.jpg",
     icono: "fa-solid fa-birthday-cake",
-},
+  },
 
-// Tortas Circulares
-{
+  // Tortas Circulares
+  {
     codigo: "TT001",
     categoria: "tortas-circulares",
     nombre: "Torta Circular de Vainilla",
     precio: 40000,
     descripcion:
-    "Bizcocho de vainilla clásico relleno con crema pastelera y cubierto con un glaseado dulce, perfecto para cualquier ocasión.",
+      "Bizcocho de vainilla clásico relleno con crema pastelera y cubierto con un glaseado dulce, perfecto para cualquier ocasión.",
     imagen: "img/torta-circular-vainilla-glaseado.jpg",
     icono: "fa-solid fa-birthday-cake",
-},
-{
+  },
+  {
     codigo: "TT002",
     categoria: "tortas-circulares",
     nombre: "Torta Circular de Manjar",
     precio: 42000,
     descripcion:
-    "Torta tradicional chilena con manjar y nueces, un deleite para los amantes de los sabores dulces y clásicos.",
+      "Torta tradicional chilena con manjar y nueces, un deleite para los amantes de los sabores dulces y clásicos.",
     imagen: "img/torta-circular-manjar-nueces-chilena.jpg",
     icono: "fa-solid fa-birthday-cake",
-},
+  },
 
-// Postres Individuales
-{
+  // Postres Individuales
+  {
     codigo: "PI001",
     categoria: "postres-individuales",
     nombre: "Mousse de Chocolate",
     precio: 5000,
     descripcion:
-    "Postre individual cremoso y suave, hecho con chocolate de alta calidad, ideal para los amantes del chocolate.",
+      "Postre individual cremoso y suave, hecho con chocolate de alta calidad, ideal para los amantes del chocolate.",
     imagen: "img/mousse-chocolate-cremoso-individual.jpg",
     icono: "fa-solid fa-ice-cream",
-},
-{
+  },
+  {
     codigo: "PI002",
     categoria: "postres-individuales",
     nombre: "Tiramisú Clásico",
     precio: 5500,
     descripcion:
-    "Un postre italiano individual con capas de café, mascarpone y cacao, perfecto para finalizar cualquier comida.",
+      "Un postre italiano individual con capas de café, mascarpone y cacao, perfecto para finalizar cualquier comida.",
     imagen: "img/tiramisu-italiano-cafe-mascarpone.jpg",
     icono: "fa-solid fa-ice-cream",
-},
+  },
 
   // Productos Sin Azúcar
-{
+  {
     codigo: "PSA001",
     categoria: "sin-azucar",
     nombre: "Torta Sin Azúcar de Naranja",
@@ -77,8 +78,8 @@ const productosData = [
     descripcion: "Torta ligera y deliciosa, endulzada naturalmente, ideal para quienes buscan opciones más saludables.",
     imagen: "img/torta-naranja-sin-azucar-saludable.jpg",
     icono: "fa-solid fa-leaf",
-},
-{
+  },
+  {
     codigo: "PSA002",
     categoria: "sin-azucar",
     nombre: "Cheesecake Sin Azúcar",
@@ -86,10 +87,10 @@ const productosData = [
     descripcion: "Suave y cremoso, este cheesecake es una opción perfecta para disfrutar sin culpa.",
     imagen: "img/cheesecake.jpg",
     icono: "fa-solid fa-leaf",
-},
+  },
 
   // Pastelería Tradicional
-{
+  {
     codigo: "PT001",
     categoria: "tradicional",
     nombre: "Empanada de Manzana",
@@ -97,29 +98,30 @@ const productosData = [
     descripcion: "Pastelería tradicional rellena de manzanas especiadas, perfecta para un dulce desayuno o merienda.",
     imagen: "img/empanadas-manzana",
     icono: "fa-solid fa-bread-slice",
-},
-{
+  },
+  {
     codigo: "PT002",
     categoria: "tradicional",
     nombre: "Tarta de Santiago",
     precio: 6000,
     descripcion:
-    "Tradicional tarta española hecha con almendras, azúcar, y huevos, una delicia para los amantes de los postres clásicos.",
+      "Tradicional tarta española hecha con almendras, azúcar, y huevos, una delicia para los amantes de los postres clásicos.",
     imagen: "img/tarta-santiago-almendras-espa-ola.jpg",
     icono: "fa-solid fa-bread-slice",
-},
+  },
 
   // Productos Sin Gluten
-{
+  {
     codigo: "PG001",
     categoria: "sin-gluten",
     nombre: "Brownie Sin Gluten",
     precio: 4000,
     descripcion:
-    "Rico y denso, este brownie es perfecto para quienes necesitan evitar el gluten sin sacrificar el sabor.",
+      "Rico y denso, este brownie es perfecto para quienes necesitan evitar el gluten sin sacrificar el sabor.",
     imagen: "img/brownie-sin-gluten-denso-chocolate.jpg",
-    icono: "fa-solid fa-wheat-awn-circle-exclamation",  },
-{
+    icono: "fa-solid fa-wheat-awn-circle-exclamation",
+  },
+  {
     codigo: "PG002",
     categoria: "sin-gluten",
     nombre: "Pan Sin Gluten",
@@ -127,10 +129,10 @@ const productosData = [
     descripcion: "Suave y esponjoso, ideal para sándwiches o para acompañar cualquier comida.",
     imagen: "img/pan-sin-gluten-esponjoso.jpg",
     icono: "fa-solid fa-wheat-awn-circle-exclamation",
-},
+  },
 
-// Productos Vegana
-{
+  // Productos Vegana
+  {
     codigo: "PV001",
     categoria: "vegana",
     nombre: "Torta Vegana de Chocolate",
@@ -138,8 +140,8 @@ const productosData = [
     descripcion: "Torta de chocolate húmeda y deliciosa, hecha sin productos de origen animal, perfecta para veganos.",
     imagen: "img/torta-vegana-chocolate-sin-productos-animales.jpg",
     icono: "fa-solid fa-seedling",
-},
-{
+  },
+  {
     codigo: "PV002",
     categoria: "vegana",
     nombre: "Galletas Veganas de Avena",
@@ -147,10 +149,10 @@ const productosData = [
     descripcion: "Crujientes y sabrosas, estas galletas son una excelente opción para un snack saludable y vegano.",
     imagen: "img/galletas-veganas-avena-crujientes.jpg",
     icono: "fa-solid fa-seedling",
-},
+  },
 
-// Tortas Especiales
-{
+  // Tortas Especiales
+  {
     codigo: "TE001",
     categoria: "especiales",
     nombre: "Torta Especial de Cumpleaños",
@@ -158,8 +160,8 @@ const productosData = [
     descripcion: "Diseñada especialmente para celebraciones, personalizable con decoraciones y mensajes únicos.",
     imagen: "img/torta-cumplea-os-especial-decorada-personalizada.jpg",
     icono: "fa-solid fa-gift",
-},
-{
+  },
+  {
     codigo: "TE002",
     categoria: "especiales",
     nombre: "Torta Especial de Boda",
@@ -167,7 +169,7 @@ const productosData = [
     descripcion: "Elegante y deliciosa, esta torta está diseñada para ser el centro de atención en cualquier boda.",
     imagen: "img/torta-boda-especial.jpg",
     icono: "fa-solid fa-gift",
-},
+  },
 ]
 const categorias = {
   // Aquí deberías incluir los nombres de las categorías
@@ -426,3 +428,32 @@ function limpiarFiltros() {
   buscarInput.value = ""
   document.querySelector('.filtro-btn[data-categoria="todas"]').click()
 }
+
+
+//Funcion para mostrar productos aleatoriamente en la sección "Tambien te puede interesar..."
+
+function obtenerRecomendados(lista, cantidad = 6) {
+  //Mezcla el arreglo y toma los primeros N valores
+  return lista.sort(() => Math.random() - 0.5).slice(0, cantidad);
+
+}
+
+const recomendados = obtenerRecomendados(productosData, 6);
+
+const contenedor = document.getElementById("recomendados");
+
+
+recomendados.forEach(prod => {
+  contenedor.innerHTML += `
+        <div class="col-6 col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="${prod.imagen}" class="card-img-top img-recomendado" alt="${prod.nombre}">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">${prod.nombre}</h5>
+                    <p class="fw-bold fs-5">$${prod.precio.toLocaleString("es-CL")}</p>
+                    <a href="detalle.html?codigo=${prod.codigo}" class="btn btn-ver-detalles mt-auto">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+    `;
+});

@@ -168,3 +168,24 @@ section{
   color:#443029;
 
 }
+
+.btn-ver-detalles{
+    background-color: var(--color-acento-rosa);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}
+
+
+.btn-ver-detalles:hover {
+  background-color: #e2687d;
+  color:#443029;
+}

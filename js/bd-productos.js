@@ -30,7 +30,7 @@ const productosData = [
     precio: 40000,
     descripcion:
       "Bizcocho de vainilla clásico relleno con crema pastelera y cubierto con un glaseado dulce, perfecto para cualquier ocasión.",
-    imagen: "img/torta-circular-vainilla-glaseado.jpg",
+    imagen: "img/torta-circular-vainilla.jpg",
     icono: "fa-solid fa-birthday-cake",
   },
   {

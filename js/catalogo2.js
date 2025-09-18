@@ -1,5 +1,4 @@
 // Variables globales
-//ESTO ES PARA QUE AL PRESIONAR NO SE VAYA AL MODAL SINO A LA PAGINA DE DETALLE
 let productosActuales = []
 const carrito = JSON.parse(localStorage.getItem("carrito")) || []
 
@@ -34,7 +33,7 @@ const productosData = [
     precio: 40000,
     descripcion:
       "Bizcocho de vainilla clásico relleno con crema pastelera y cubierto con un glaseado dulce, perfecto para cualquier ocasión.",
-    imagen: "img/torta-circular-vainilla.jpg",
+    imagen: "img/torta-circular-vainilla-glaseado.jpg",
     icono: "fa-solid fa-birthday-cake",
   },
   {
@@ -44,7 +43,7 @@ const productosData = [
     precio: 42000,
     descripcion:
       "Torta tradicional chilena con manjar y nueces, un deleite para los amantes de los sabores dulces y clásicos.",
-    imagen: "img/torta-circular-manjar.jpg",
+    imagen: "img/torta-circular-manjar-nueces-chilena.jpg",
     icono: "fa-solid fa-birthday-cake",
   },
 
@@ -97,7 +96,7 @@ const productosData = [
     nombre: "Empanada de Manzana",
     precio: 3000,
     descripcion: "Pastelería tradicional rellena de manzanas especiadas, perfecta para un dulce desayuno o merienda.",
-    imagen: "img/empanadas-manzana.jpg",
+    imagen: "img/empanadas-manzana",
     icono: "fa-solid fa-bread-slice",
   },
   {
@@ -302,7 +301,50 @@ function filtrarProductos() {
   mostrarProductos(productosActuales)
 }
 
+// Abrir modal con detalles del producto
+function abrirModal(codigoProducto) {
+  const producto = productosData.find((p) => p.codigo === codigoProducto)
+  if (!producto) return
 
+  modalBody.innerHTML = `
+        <div class="modal-producto">
+            <div class="modal-imagen">
+                <img src="${producto.imagen}" alt="${producto.nombre}">
+                <div class="categoria-badge">${obtenerNombreCategoria(producto.categoria)}</div>
+            </div>
+            <div class="modal-info">
+                <h2 class="pacifico-regular" style="color: var(--color-acento-cafe); margin-bottom: 15px;">
+                    ${producto.nombre}
+                </h2>
+                <p class="modal-descripcion" style="color: var(--color-letra-gris); line-height: 1.6; margin-bottom: 20px;">
+                    ${producto.descripcion}
+                </p>
+                <div class="modal-detalles" style="margin-bottom: 25px;">
+                    <p><strong>Código:</strong> ${producto.codigo}</p>
+                    <p><strong>Categoría:</strong> ${obtenerNombreCategoria(producto.categoria)}</p>
+                </div>
+                <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 2px solid var(--color-acento-rosa);">
+                    <span class="modal-precio" style="font-size: 2rem; font-weight: 700; color: var(--color-acento-cafe);">
+                        ${formatearPrecio(producto.precio)}
+                    </span>
+                    <button class="btn-agregar" onclick="agregarAlCarrito('${producto.codigo}'); cerrarModal();" style="padding: 15px 30px; font-size: 1.1rem;">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    `
+
+  modalOverlay.classList.add("active")
+  document.body.style.overflow = "hidden"
+}
+
+// Cerrar modal
+function cerrarModal() {
+  modalOverlay.classList.remove("active")
+  document.body.style.overflow = "auto"
+}
 
 // Agregar producto al carrito
 function agregarAlCarrito(codigoProducto) {
@@ -387,45 +429,3 @@ function limpiarFiltros() {
   document.querySelector('.filtro-btn[data-categoria="todas"]').click()
 }
 
-
-// Funciones para la navegación a la página de detalle
-function redirigirADetalle(codigoProducto) {
-  // Construye la URL de la página de detalle con el código del producto como parámetro
-  window.location.href = `detalle-producto.html?codigo=${codigoProducto}`;
-}
-
-// Mostrar productos en el grid
-function mostrarProductos(productos) {
-  if (productos.length === 0) {
-    productosGrid.style.display = "none";
-    noProductos.style.display = "block";
-    return;
-  }
-
-  productosGrid.style.display = "grid";
-  noProductos.style.display = "none";
-
-  productosGrid.innerHTML = productos
-    .map(
-      (producto) => `
-        <div class="producto-card" onclick="redirigirADetalle('${producto.codigo}')">
-            <div class="producto-imagen">
-                <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy">
-                <div class="categoria-badge">${obtenerNombreCategoria(producto.categoria)}</div>
-            </div>
-            <div class="producto-info">
-                <h3 class="producto-nombre">${producto.nombre}</h3>
-                <p class="producto-descripcion">${producto.descripcion}</p>
-                <div class="producto-footer">
-                    <span class="producto-precio">${formatearPrecio(producto.precio)}</span>
-                    <button class="btn-agregar" onclick="event.stopPropagation(); agregarAlCarrito('${producto.codigo}')">
-                        <i class="fa-solid fa-cart-plus"></i>
-                        Agregar
-                    </button>
-                </div>
-            </div>
-        </div>
-      `,
-    )
-    .join("");
-}

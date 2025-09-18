@@ -1,7 +1,4 @@
-// Asegúrate de que `productosData` se haya cargado desde el otro archivo
 const productos = productosData;
-
-// ---
 
 // 1. Función para renderizar el producto en el HTML
 function mostrarProducto(producto) {
@@ -10,45 +7,21 @@ function mostrarProducto(producto) {
     document.getElementById("nombre-producto").textContent = producto.nombre;
     document.getElementById("precio-producto").textContent = `$${producto.precio.toLocaleString("es-CL")}`;
     document.getElementById("descripcion-producto").textContent = producto.descripcion;
+    document.getElementById("codigo-producto").textContent= producto.codigo;
+    document.getElementById("categoria-producto").textContent= producto.categoria;
     document.getElementById("historia-producto").textContent = producto.historia || "Sin historia";
     const img = document.querySelector(".img-detalle-producto");
     img.src = producto.imagen;
     img.alt = producto.nombre;
 }
 
-// ---
-
 // 2. Función para obtener productos aleatorios para "También te puede interesar"
-// Ahora recibe el producto actual como argumento para poder filtrar correctamente.
 function obtenerRecomendados(lista, productoActual, cantidad = 6) {
-    // Si no hay producto actual, no filtres nada.
     const listaFiltrada = productoActual ? lista.filter(p => p.codigo !== productoActual.codigo) : lista;
     return listaFiltrada.sort(() => Math.random() - 0.5).slice(0, cantidad);
 }
 
-// ---
-
-// 3. Lógica para cargar el producto al inicio o cuando el hash cambia
-function cargarProducto() {
-    const codigoProducto = window.location.hash.substring(1);
-    const productoSeleccionado = productos.find(p => p.codigo === codigoProducto) || productos[0];
-
-    // Ahora pasamos el producto seleccionado a la función de renderizado y a la de los recomendados
-    mostrarProducto(productoSeleccionado);
-    renderizarRecomendados(productoSeleccionado);
-
-    // --- CAMBIO AQUÍ ---
-    // Desplaza la ventana al principio de la página
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth' // Desplazamiento suave
-    });
-}
-
-// ---
-
-// 4. Renderizar los productos recomendados en el HTML de forma optimizada
-// Creamos una función para que sea más fácil de llamar.
+// 3. Renderizar los productos recomendados
 function renderizarRecomendados(productoActual) {
     const contenedorRecomendados = document.getElementById("recomendados");
     const recomendados = obtenerRecomendados(productos, productoActual, 6);
@@ -61,8 +34,8 @@ function renderizarRecomendados(productoActual) {
                     <img src="${prod.imagen}" class="card-img-top img-recomendado" alt="${prod.nombre}">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">${prod.nombre}</h5>
-                        <p class="fw-bold fs-5">$${prod.precio.toLocaleString("es-CL")}</p>
-                        <a href="#${prod.codigo}" class="btn btn-ver-detalles mt-auto">Ver detalles</a>
+                        <p class="fw-bold fs-5 text-success">$${prod.precio.toLocaleString("es-CL")}</p>
+                        <a href="detalle-producto.html?codigo=${prod.codigo}" class="btn btn-ver-detalles mt-auto">Ver detalles</a>
                     </div>
                 </div>
             </div>
@@ -71,10 +44,32 @@ function renderizarRecomendados(productoActual) {
     contenedorRecomendados.innerHTML = htmlRecomendados;
 }
 
+// 4. Lógica principal para cargar el producto
+function cargarProducto() {
+    // Intenta obtener el código del parámetro de la URL (si vienes del catálogo)
+    const params = new URLSearchParams(window.location.search);
+    let codigoProducto = params.get("codigo");
+
+    // Si no hay parámetro, intenta obtenerlo del hash (si la navegación es interna)
+    if (!codigoProducto) {
+        codigoProducto = window.location.hash.substring(1);
+    }
+    
+    // Busca el producto, o usa el primero si no se encuentra ninguno
+    const productoSeleccionado = productos.find(p => p.codigo === codigoProducto) || productos[0];
+
+    // Llama a las funciones para mostrar y renderizar los productos
+    mostrarProducto(productoSeleccionado);
+    renderizarRecomendados(productoSeleccionado);
+
+    // Desplaza la ventana al principio de la página
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 // ---
 
-// Escuchar cambios en el hash de la URL
-window.addEventListener('hashchange', cargarProducto);
+// Event listener para manejar los clics y la carga inicial
+document.addEventListener("DOMContentLoaded", cargarProducto);
 
-// Cargar el producto inicial al cargar la página
-cargarProducto();
+// Event listener para manejar la navegación con el botón de retroceso
+window.addEventListener('popstate', cargarProducto);

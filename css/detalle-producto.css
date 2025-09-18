@@ -2,7 +2,6 @@
   width: 100%;
   height: 270px;         /* altura fija */
   object-fit: cover;     /* recorta la imagen si no encaja */
-  border-radius: 8px;    /* opcional: bordes redondeados */
 }
 
 .img-detalle-producto {
@@ -13,9 +12,6 @@
   margin-bottom: 20px;
 }
 
-
-.btn-ver-detalles{
-  background-color: #FFC0CB;
-  color:#443029;
-
+h5{
+  font-weight: bold;
 }

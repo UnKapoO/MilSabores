@@ -1,31 +1,31 @@
-    // Variables globales
-    let carritoActual = JSON.parse(localStorage.getItem("carrito")) || []
-    let productoAEliminar = null
-    const productosData = [] // Declare productosData variable
+// Variables globales
+let carritoActual = JSON.parse(localStorage.getItem("carrito")) || []
+let productoAEliminar = null
+const productosData = [] // Declare productosData variable
 
-    // Elementos del DOM
-    const carritoVacio = document.getElementById("carrito-vacio")
-    const carritoConProductos = document.getElementById("carrito-con-productos")
-    const listaProductosCarrito = document.getElementById("lista-productos-carrito")
-    const subtotalElement = document.getElementById("subtotal")
-    const totalFinalElement = document.getElementById("total-final")
-    const costoEnvioElement = document.getElementById("costo-envio")
-    const descuentoElement = document.getElementById("descuento")
-    const listaRecomendados = document.getElementById("lista-recomendados")
+// Elementos del DOM
+const carritoVacio = document.getElementById("carrito-vacio")
+const carritoConProductos = document.getElementById("carrito-con-productos")
+const listaProductosCarrito = document.getElementById("lista-productos-carrito")
+const subtotalElement = document.getElementById("subtotal")
+const totalFinalElement = document.getElementById("total-final")
+const costoEnvioElement = document.getElementById("costo-envio")
+const descuentoElement = document.getElementById("descuento")
+const listaRecomendados = document.getElementById("lista-recomendados")
 
-    // Constantes
-    const COSTO_ENVIO = 3000
-    const ENVIO_GRATIS_MINIMO = 50000
+// Constantes
+const COSTO_ENVIO = 3000
+const ENVIO_GRATIS_MINIMO = 50000
 
-    // Inicializar página
-    document.addEventListener("DOMContentLoaded", () => {
+// Inicializar página
+document.addEventListener("DOMContentLoaded", () => {
     cargarCarrito()
     cargarProductosRecomendados()
     configurarEventListeners()
-    })
+})
 
-    // Configurar event listeners
-    function configurarEventListeners() {
+// Configurar event listeners
+function configurarEventListeners() {
     // Limpiar carrito
     document.getElementById("limpiar-carrito")?.addEventListener("click", limpiarCarrito)
 
@@ -43,15 +43,15 @@
     // Cerrar modal al hacer click fuera
     document.querySelectorAll(".modal-overlay").forEach((modal) => {
         modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-            cerrarModales()
-        }
+            if (e.target === modal) {
+                cerrarModales()
+            }
         })
     })
-    }
+}
 
-    // Cargar carrito
-    function cargarCarrito() {
+// Cargar carrito
+function cargarCarrito() {
     carritoActual = JSON.parse(localStorage.getItem("carrito")) || []
 
     if (carritoActual.length === 0) {
@@ -61,30 +61,30 @@
     }
 
     actualizarContadorCarrito()
-    }
+}
 
-    // Mostrar carrito vacío
-    function mostrarCarritoVacio() {
+// Mostrar carrito vacío
+function mostrarCarritoVacio() {
     carritoVacio.style.display = "block"
     carritoConProductos.style.display = "none"
-    }
+}
 
-    // Mostrar carrito con productos
-    function mostrarCarritoConProductos() {
+// Mostrar carrito con productos
+function mostrarCarritoConProductos() {
     carritoVacio.style.display = "none"
     carritoConProductos.style.display = "block"
 
     renderizarProductosCarrito()
     calcularTotales()
-    }
+}
 
-    // Renderizar productos del carrito
-    function renderizarProductosCarrito() {
+// Renderizar productos del carrito
+function renderizarProductosCarrito() {
     listaProductosCarrito.innerHTML = carritoActual
         .map((item, index) => {
-        const personalizacion = obtenerTextoPersonalizacion(item)
+            const personalizacion = obtenerTextoPersonalizacion(item)
 
-        return `
+            return `
                 <div class="carrito-item" data-index="${index}">
                     <div class="item-imagen">
                         <img src="${item.imagen}" alt="${item.nombre}" loading="lazy">
@@ -112,16 +112,15 @@
                     </div>
                     
                     <div class="item-acciones">
-                        ${
-                        esProductoPersonalizable(item)
-                            ? `
+                        ${esProductoPersonalizable(item)
+                    ? `
                             <button class="btn-accion btn-personalizar" onclick="editarPersonalizacion(${index})">
                                 <i class="fa-solid fa-edit"></i>
                                 Editar
                             </button>
                         `
-                            : ""
-                        }
+                    : ""
+                }
                         <button class="btn-accion btn-eliminar-item" onclick="eliminarProducto(${index})">
                             <i class="fa-solid fa-trash"></i>
                             Eliminar
@@ -131,18 +130,18 @@
             `
         })
         .join("")
-    }
+}
 
-    // Obtener texto de personalización
-    function obtenerTextoPersonalizacion(item) {
+// Obtener texto de personalización
+function obtenerTextoPersonalizacion(item) {
     const personalizaciones = []
 
     if (item.cantidadPersonas) {
         const tamaños = {
-        pequeno: "Pequeño (4-6 personas)",
-        estandar: `Estándar (${item.cantidadPersonas})`,
-        grande: "Grande (12-15 personas)",
-        "extra-grande": "Extra Grande (18-20 personas)",
+            pequeno: "Pequeño (4-6 personas)",
+            estandar: `Estándar (${item.cantidadPersonas})`,
+            grande: "Grande (12-15 personas)",
+            "extra-grande": "Extra Grande (18-20 personas)",
         }
         personalizaciones.push(`<strong>Tamaño:</strong> ${tamaños[item.cantidadPersonas] || item.cantidadPersonas}`)
     }
@@ -156,16 +155,16 @@
     }
 
     return personalizaciones.join(" • ")
-    }
+}
 
-    // Verificar si un producto es personalizable
-    function esProductoPersonalizable(item) {
+// Verificar si un producto es personalizable
+function esProductoPersonalizable(item) {
     const categoriasTortas = ["tortas-cuadradas", "tortas-circulares", "especiales"]
     return categoriasTortas.includes(item.categoria)
-    }
+}
 
-    // Cambiar cantidad de producto
-    function cambiarCantidad(index, cambio) {
+// Cambiar cantidad de producto
+function cambiarCantidad(index, cambio) {
     const nuevaCantidad = carritoActual[index].cantidad + cambio
     if (nuevaCantidad >= 1 && nuevaCantidad <= 99) {
         carritoActual[index].cantidad = nuevaCantidad
@@ -174,10 +173,10 @@
         calcularTotales()
         actualizarContadorCarrito()
     }
-    }
+}
 
-    // Actualizar cantidad directamente
-    function actualizarCantidad(index, nuevaCantidad) {
+// Actualizar cantidad directamente
+function actualizarCantidad(index, nuevaCantidad) {
     const cantidad = Number.parseInt(nuevaCantidad)
     if (cantidad >= 1 && cantidad <= 99) {
         carritoActual[index].cantidad = cantidad
@@ -186,48 +185,48 @@
         calcularTotales()
         actualizarContadorCarrito()
     }
-    }
+}
 
-    // Eliminar producto del carrito
-    function eliminarProducto(index) {
+// Eliminar producto del carrito
+function eliminarProducto(index) {
     productoAEliminar = index
     document.getElementById("modal-confirmar-eliminar").classList.add("active")
-    }
+}
 
-    // Confirmar eliminación
-    function confirmarEliminacion() {
+// Confirmar eliminación
+function confirmarEliminacion() {
     if (productoAEliminar !== null) {
         carritoActual.splice(productoAEliminar, 1)
         guardarCarrito()
 
         if (carritoActual.length === 0) {
-        mostrarCarritoVacio()
+            mostrarCarritoVacio()
         } else {
-        renderizarProductosCarrito()
-        calcularTotales()
+            renderizarProductosCarrito()
+            calcularTotales()
         }
 
         actualizarContadorCarrito()
         cerrarModalEliminar()
         mostrarNotificacion("Producto eliminado del carrito")
     }
-    }
+}
 
-    // Cerrar modal de eliminar
-    function cerrarModalEliminar() {
+// Cerrar modal de eliminar
+function cerrarModalEliminar() {
     document.getElementById("modal-confirmar-eliminar").classList.remove("active")
     productoAEliminar = null
-    }
+}
 
-    // Editar personalización
-    function editarPersonalizacion(index) {
+// Editar personalización
+function editarPersonalizacion(index) {
     const item = carritoActual[index]
     // Reutilizar la lógica del catálogo para personalización
     mostrarFormularioPersonalizacionEditar(item, index)
-    }
+}
 
-    // Mostrar formulario de personalización para editar
-    function mostrarFormularioPersonalizacionEditar(producto, index) {
+// Mostrar formulario de personalización para editar
+function mostrarFormularioPersonalizacionEditar(producto, index) {
     const modalPersonalizar = document.getElementById("modal-personalizar")
     const modalContent = modalPersonalizar.querySelector(".modal-content")
 
@@ -293,10 +292,10 @@
         contadorCaracteres.textContent = `${longitud}/50 caracteres`
         contadorCaracteres.style.color = longitud > 40 ? "#e74c3c" : "#666"
     })
-    }
+}
 
-    // Guardar personalización editada
-    function guardarPersonalizacionEditada(index) {
+// Guardar personalización editada
+function guardarPersonalizacionEditada(index) {
     const cantidadPersonas = document.getElementById("cantidad-personas-edit").value
     const mensajeEspecial = document.getElementById("mensaje-especial-edit").value.trim()
     const colorGlaseado = document.getElementById("color-glaseado-edit").value
@@ -310,12 +309,12 @@
     const precioBase =
         carritoActual[index].precio /
         (carritoActual[index].cantidadPersonas === "pequeno"
-        ? 0.8
-        : carritoActual[index].cantidadPersonas === "grande"
-            ? 1.3
-            : carritoActual[index].cantidadPersonas === "extra-grande"
-            ? 1.6
-            : 1)
+            ? 0.8
+            : carritoActual[index].cantidadPersonas === "grande"
+                ? 1.3
+                : carritoActual[index].cantidadPersonas === "extra-grande"
+                    ? 1.6
+                    : 1)
 
     const multiplicador = document.getElementById("cantidad-personas-edit").selectedOptions[0].dataset.precio
     const nuevoPrecio = precioBase * Number.parseFloat(multiplicador)
@@ -331,10 +330,10 @@
     calcularTotales()
     cerrarModales()
     mostrarNotificacion("Personalización actualizada")
-    }
+}
 
-    // Limpiar carrito
-    function limpiarCarrito() {
+// Limpiar carrito
+function limpiarCarrito() {
     if (confirm("¿Estás seguro de que deseas eliminar todos los productos del carrito?")) {
         carritoActual = []
         guardarCarrito()
@@ -342,10 +341,10 @@
         actualizarContadorCarrito()
         mostrarNotificacion("Carrito limpiado")
     }
-    }
+}
 
-    // Calcular totales
-    function calcularTotales() {
+// Calcular totales
+function calcularTotales() {
     const subtotal = carritoActual.reduce((total, item) => total + item.precio * item.cantidad, 0)
     const envio = subtotal >= ENVIO_GRATIS_MINIMO ? 0 : COSTO_ENVIO
     const descuento = Number.parseFloat(document.getElementById("descuento").textContent.replace(/[^0-9.-]/g, "")) || 0
@@ -359,10 +358,10 @@
     if (subtotal >= ENVIO_GRATIS_MINIMO && envio === 0) {
         costoEnvioElement.innerHTML = '<span style="color: #27ae60; font-weight: 600;">GRATIS</span>'
     }
-    }
+}
 
-    // Aplicar código de descuento
-    function aplicarCodigoDescuento() {
+// Aplicar código de descuento
+function aplicarCodigoDescuento() {
     const codigo = document.getElementById("input-codigo").value.trim().toUpperCase()
     const descuentoLinea = document.querySelector(".linea-resumen.descuento")
 
@@ -386,10 +385,10 @@
     } else {
         alert("Código de descuento no válido")
     }
-    }
+}
 
-    // Cargar productos recomendados
-    function cargarProductosRecomendados() {
+// Cargar productos recomendados
+function cargarProductosRecomendados() {
     // Obtener productos aleatorios que no estén en el carrito
     const productosEnCarrito = carritoActual.map((item) => item.codigo)
     const productosDisponibles = productosData.filter((producto) => !productosEnCarrito.includes(producto.codigo))
@@ -399,7 +398,7 @@
 
     listaRecomendados.innerHTML = recomendados
         .map(
-        (producto) => `
+            (producto) => `
             <div class="recomendado-item">
                 <div class="recomendado-imagen">
                     <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy">
@@ -415,10 +414,10 @@
         `,
         )
         .join("")
-    }
+}
 
-    // Agregar producto recomendado
-    function agregarRecomendado(codigoProducto) {
+// Agregar producto recomendado
+function agregarRecomendado(codigoProducto) {
     const producto = productosData.find((p) => p.codigo === codigoProducto)
     if (!producto) return
 
@@ -431,17 +430,17 @@
     } else {
         // Agregar directamente
         const itemExistente = carritoActual.find(
-        (item) =>
-            item.codigo === codigoProducto && !item.cantidadPersonas && !item.mensajeEspecial && !item.colorGlaseado,
+            (item) =>
+                item.codigo === codigoProducto && !item.cantidadPersonas && !item.mensajeEspecial && !item.colorGlaseado,
         )
 
         if (itemExistente) {
-        itemExistente.cantidad += 1
+            itemExistente.cantidad += 1
         } else {
-        carritoActual.push({
-            ...producto,
-            cantidad: 1,
-        })
+            carritoActual.push({
+                ...producto,
+                cantidad: 1,
+            })
         }
 
         guardarCarrito()
@@ -449,49 +448,47 @@
         cargarProductosRecomendados()
         mostrarNotificacion(`${producto.nombre} agregado al carrito`)
     }
-    }
+}
 
-    // Proceder al pago
-    function procederAlPago() {
+// Proceder al pago
+function procederAlPago() {
     if (carritoActual.length === 0) {
         alert("Tu carrito está vacío")
         return
     }
 
-    // Aquí puedes redirigir a la página de checkout
-    alert("Redirigiendo al proceso de pago...")
-    // window.location.href = "checkout.html"
-    }
+    window.location.href = "checkout.html"
+}
 
-    // Funciones auxiliares
-    function guardarCarrito() {
+// Funciones auxiliares
+function guardarCarrito() {
     localStorage.setItem("carrito", JSON.stringify(carritoActual))
 
     // Disparar evento personalizado para actualizar otros componentes
     const evento = new CustomEvent("carritoActualizado")
     document.dispatchEvent(evento)
-    }
+}
 
-    function actualizarContadorCarrito() {
+function actualizarContadorCarrito() {
     const cartCount = document.querySelector(".cart-count")
     if (cartCount) {
         const totalItems = carritoActual.reduce((total, item) => total + item.cantidad, 0)
         cartCount.textContent = totalItems
         cartCount.style.display = totalItems > 0 ? "flex" : "none"
     }
-    }
+}
 
-    function formatearPrecio(precio) {
+function formatearPrecio(precio) {
     return `$${precio.toLocaleString("es-CL")}`
-    }
+}
 
-    function cerrarModales() {
+function cerrarModales() {
     document.querySelectorAll(".modal-overlay").forEach((modal) => {
         modal.classList.remove("active")
     })
-    }
+}
 
-    function mostrarNotificacion(mensaje) {
+function mostrarNotificacion(mensaje) {
     const notificacion = document.createElement("div")
     notificacion.className = "notificacion"
     notificacion.innerHTML = `
@@ -525,15 +522,15 @@
     setTimeout(() => {
         notificacion.style.transform = "translateX(100%)"
         setTimeout(() => {
-        document.body.removeChild(notificacion)
+            document.body.removeChild(notificacion)
         }, 300)
     }, 3000)
-    }
+}
 
-    // Escuchar cambios en el localStorage desde otras pestañas
-    window.addEventListener("storage", (e) => {
+// Escuchar cambios en el localStorage desde otras pestañas
+window.addEventListener("storage", (e) => {
     if (e.key === "carrito") {
         cargarCarrito()
         cargarProductosRecomendados()
     }
-    })
+})

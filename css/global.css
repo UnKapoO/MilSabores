@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Pacifico&display=swap');
 
-:root{ /* Variables CSS */
-    /* Colores */   
+:root {
+    /* Variables CSS */
+    /* Colores */
     --color-fondo-crema: #FFF5E1;
     --color-acento-rosa: #FFC0CB;
     --color-acento-cafe: #8B4513;
@@ -10,7 +11,7 @@
     /* Fuentes */
     --fuente-principal: 'Lato', sans-serif;
     --fuente-secundaria: 'Pacifico', cursive;
-    
+
     /* Breakpoints */
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;
@@ -19,15 +20,15 @@
 
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: var(--fuente-principal);
-    color: var(--color-letra-cafe) ;
+    color: var(--color-letra-cafe);
     background-color: #FFF5E1;
     padding-top: 120px;
 }
@@ -40,7 +41,7 @@ select {
     font-family: var(--fuente-principal);
 }
 
-input{
+input {
     border: none;
     outline: none;
 }
@@ -48,37 +49,39 @@ input{
 
 /*Titulos*/
 
-h2{
-  color: #443029;  
-  font-family: var(--fuente-secundaria);
-  margin-top: 10px;
-  margin-bottom: 10px;
-  
+h2 {
+    color: #443029;
+    font-family: var(--fuente-secundaria);
+    margin-top: 10px;
+    margin-bottom: 10px;
+
 }
 
 /*UTILS*/
-.container{
+.container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.background-pink{
+.background-pink {
     background-color: var(--color-fondo-crema);
 }
 
-section{
+section {
     padding: 100px 0;
-    @media(max-width: 992){
+
+    @media(max-width: 992) {
         padding: 50px 15;
     }
 }
 
 
-.container-logo{
+.container-logo {
     display: flex;
     align-items: center;
     gap: 20px;
-    img{
+
+    img {
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -94,6 +97,7 @@ section{
     font-weight: 400;
     font-style: normal;
 }
+
 .lato-thin {
     font-family: "Lato", sans-serif;
     font-weight: 100;
@@ -157,19 +161,19 @@ section{
 
 /*Botones*/
 
-.btn-agregar-carrito{
-  background-color: #FFC0CB;
-  
+.btn-agregar-carrito {
+    background-color: #FFC0CB;
+
 
 }
 
-.btn-agregar-carrito:hover{
-  background-color: #e2687d;
-  color:#443029;
+.btn-agregar-carrito:hover {
+    background-color: #e2687d;
+    color: #443029;
 
 }
 
-.btn-ver-detalles{
+.btn-ver-detalles {
     background-color: var(--color-acento-rosa);
     color: white;
     border: none;
@@ -186,6 +190,6 @@ section{
 
 
 .btn-ver-detalles:hover {
-  background-color: #e2687d;
-  color:#443029;
+    background-color: #e2687d;
+    color: #443029;
 }

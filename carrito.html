@@ -1,11 +1,220 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Carrito de Compras - Pastelería Dulce Hogar</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+
+    <!-- Nuevo header de dos niveles -->
+    <header class="header-doble">
+        <!-- Header superior con información de contacto, logo y carrito -->
+        <div class="header-superior">
+            <div class="container">
+                <div class="header-superior-content">
+                    <div class="contacto-info">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Soporte al cliente</span>
+                        <span class="telefono">+56 9 99999999</span>
+                    </div>
+
+                    <div class="logo-principal">
+                        <img src="img/logo.jpg" alt="logo">
+                        <span class="pacifico-regular">Mil Sabores</span>
+                    </div>
+
+                    <div class="usuario-carrito">
+                        <button class="btn-usuario">
+                            <i class="fa-solid fa-user"></i>
+
+                        </button>
+                        <button class="btn-carrito">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="carrito-texto">Carrito</span>
+                            <span class="cart-count">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header inferior con navegación y búsqueda -->
+        <div class="header-inferior">
+            <div class="container">
+                <div class="header-inferior-content">
+                    <nav class="navegacion-principal">
+                        <ul>
+                            <li><a href="index.html">INICIO</a></li>
+                            <li><a href="catalogo.html" class="active">CATÁLOGO</a></li>
+                            <li><a href="#">TORTAS ESPECIALES</a></li>
+                            <li><a href="#">SIN AZÚCAR</a></li>
+                            <li><a href="#">VEGANO</a></li>
+                            <li><a href="#">BLOG</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="busqueda-header">
+                        <input type="text" placeholder="Buscar..." class="input-busqueda-header">
+                        <button class="btn-buscar">
+                            <i class="fa-solid fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú móvil -->
+        <button class="btn-menu-movil">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="menu-movil">
+            <div class="menu-movil-header">
+                <span class="pacifico-regular">1000 Sabores</span>
+                <button class="btn-cerrar-menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <nav class="navegacion-movil">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="#">Tortas Especiales</a></li>
+                    <li><a href="#">Sin Azúcar</a></li>
+                    <li><a href="#">Vegano</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html">Inicio</a>
+                <span>/</span>
+                <span>Carrito de Compras</span>
+            </div>
+
+            <!-- Título -->
+            <div class="page-header">
+                <h1 class="pacifico-regular">Mi Carrito de Compras</h1>
+                <p>Revisa y modifica tus productos antes de proceder al pago</p>
+            </div>
+
+            <!-- Contenido del carrito -->
+            <div class="carrito-container">
+                <!-- Carrito vacío -->
+                <div id="carrito-vacio" class="carrito-vacio" style="display: none;">
+                    <div class="carrito-vacio-content">
+                        <i class="fa-solid fa-shopping-cart"></i>
+                        <h3>Tu carrito está vacío</h3>
+                        <p>¡Agrega algunos de nuestros deliciosos productos!</p>
+                        <a href="catalogo.html" class="btn-primario">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            Ir al Catálogo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Carrito con productos -->
+                <div id="carrito-con-productos" class="carrito-con-productos">
+                    <div class="carrito-grid">
+                        <!-- Lista de productos -->
+                        <div class="productos-lista">
+                            <div class="productos-header">
+                                <h2>Productos en tu carrito</h2>
+                                <button id="limpiar-carrito" class="btn-limpiar">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Limpiar carrito
+                                </button>
+                            </div>
+                            <div id="lista-productos-carrito">
+                                <!-- Los productos se cargarán dinámicamente aquí -->
+                            </div>
+                        </div>
+
+                        <!-- Resumen y recomendaciones -->
+                        <div class="carrito-sidebar">
+                            <!-- Resumen del pedido -->
+                            <div class="resumen-pedido">
+                                <h3>Resumen del Pedido</h3>
+                                <div class="resumen-lineas">
+                                    <div class="linea-resumen">
+                                        <span>Subtotal:</span>
+                                        <span id="subtotal">$0</span>
+                                    </div>
+                                    <div class="linea-resumen">
+                                        <span>Envío:</span>
+                                        <span id="costo-envio">$3.000</span>
+                                    </div>
+                                    <div class="linea-resumen descuento" style="display: none;">
+                                        <span>Descuento:</span>
+                                        <span id="descuento">-$0</span>
+                                    </div>
+                                    <div class="linea-resumen total">
+                                        <span>Total:</span>
+                                        <span id="total-final">$3.000</span>
+                                    </div>
+                                </div>
+                                <div class="codigo-descuento">
+                                    <input type="text" id="input-codigo" placeholder="Código de descuento">
+                                    <button id="aplicar-codigo" class="btn-codigo">Aplicar</button>
+                                </div>
+                                <button id="proceder-pago" class="btn-pago">
+                                    <i class="fa-solid fa-credit-card"></i>
+                                    Proceder al Pago
+                                </button>
+                            </div>
+
+                            <!-- Productos recomendados -->
+                            <div class="productos-recomendados">
+                                <h3>Otros clientes también llevaron</h3>
+                                <div id="lista-recomendados">
+                                    <!-- Los productos recomendados se cargarán dinámicamente -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de confirmación para eliminar -->
+    <div id="modal-confirmar-eliminar" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirmar eliminación</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>¿Estás seguro de que deseas eliminar este producto del carrito?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secundario" onclick="cerrarModalEliminar()">Cancelar</button>
+                <button class="btn-eliminar" onclick="confirmarEliminacion()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de personalización (reutilizado del catálogo) -->
+    <div id="modal-personalizar" class="modal-overlay">
+        <div class="modal-content modal-personalizar-content">
+            <!-- El contenido se cargará dinámicamente -->
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/productos-data.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/carrito.js"></script>
 </body>
 </html>

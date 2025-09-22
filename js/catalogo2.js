@@ -172,11 +172,14 @@ const productosData = [
   },
 ]
 const categorias = {
-  // Aquí deberías incluir los nombres de las categorías
-  // Por ejemplo:
-  // 'categoria1': 'Nombre de la Categoría 1',
-  // 'categoria2': 'Nombre de la Categoría 2',
-  // ...
+  'tortas-cuadradas': 'Tortas Cuadradas',
+  'tortas-circulares': 'Tortas Circulares', 
+  'postres-individuales': 'Postres Individuales',
+  'sin-azucar': 'Sin Azúcar',
+  'tradicional': 'Tradicional',
+  'sin-gluten': 'Sin Gluten',
+  'vegana': 'Vegana',
+  'especiales': 'Especiales'
 }
 
 // Elementos del DOM

@@ -163,14 +163,11 @@ section {
 
 .btn-agregar-carrito {
     background-color: #FFC0CB;
-
-
 }
 
 .btn-agregar-carrito:hover {
     background-color: #e2687d;
     color: #443029;
-
 }
 
 .btn-ver-detalles {

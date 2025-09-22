@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Mil Sabores</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-doble">
+        <div class="header-superior">
+            <div class="container">
+                <div class="header-superior-content">
+                    <div class="contacto-info">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Contacto:</span>
+                        <span class="telefono">+56 9 1234 5678</span>
+                    </div>
+                    
+                    <div class="logo-principal">
+                        <img src="img/logo.jpg" alt="Mil Sabores">
+                        <span class="pacifico-regular">Mil Sabores</span>
+                    </div>
+                    
+                    <div class="usuario-carrito">
+                        <button class="btn-usuario">
+                            <i class="fa-solid fa-user"></i>
+                            <span>Mi cuenta</span>
+                        </button>
+                        
+                        <button class="btn-carrito" onclick="window.location.href='carrito.html'">
+                            <i class="fa-solid fa-shopping-cart"></i>
+                            <span class="carrito-texto">Carrito</span>
+                            <span class="cart-count">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-inferior">
+            <div class="container">
+                <div class="header-inferior-content">
+                    <nav class="navegacion-principal">
+                        <ul>
+                            <li><a href="index.html">Inicio</a></li>
+                            <li><a href="catalogo.html">Catálogo</a></li>
+                            <li><a href="carrito.html">Carrito</a></li>
+                            <li><a href="#contacto">Contacto</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="busqueda-header">
+                        <input type="text" class="input-busqueda-header" placeholder="Buscar productos...">
+                        <button class="btn-buscar">
+                            <i class="fa-solid fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="checkout-main">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="checkout-breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="carrito.html">Carrito</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                </ol>
+            </nav>
+
+            <!-- Título -->
+            <div class="checkout-header">
+                <h1 class="pacifico-regular">Finalizar Compra</h1>
+                <p class="checkout-subtitle">Completa tu pedido de manera segura</p>
+            </div>
+
+            <div class="row">
+                <!-- Formulario de checkout -->
+                <div class="col-lg-8">
+                    <div class="checkout-form-container">
+                        <!-- Información de entrega -->
+                        <div class="checkout-section">
+                            <h3 class="section-title">
+                                <i class="fa-solid fa-truck"></i>
+                                Información de Entrega
+                            </h3>
+                            
+                            <form id="form-entrega" class="checkout-form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="nombre-completo">Nombre completo *</label>
+                                            <input type="text" id="nombre-completo" name="nombreCompleto" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="telefono">Teléfono *</label>
+                                            <input type="tel" id="telefono" name="telefono" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Correo electrónico *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="direccion">Dirección de entrega *</label>
+                                    <input type="text" id="direccion" name="direccion" required>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="comuna">Comuna *</label>
+                                            <select id="comuna" name="comuna" required>
+                                                <option value="">Seleccionar comuna</option>
+                                                <option value="santiago">Santiago</option>
+                                                <option value="providencia">Providencia</option>
+                                                <option value="las-condes">Las Condes</option>
+                                                <option value="vitacura">Vitacura</option>
+                                                <option value="nunoa">Ñuñoa</option>
+                                                <option value="la-reina">La Reina</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="fecha-entrega">Fecha de entrega *</label>
+                                            <input type="date" id="fecha-entrega" name="fechaEntrega" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="comentarios">Comentarios adicionales</label>
+                                    <textarea id="comentarios" name="comentarios" rows="3" placeholder="Instrucciones especiales para la entrega..."></textarea>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Información de pago -->
+                        <div class="checkout-section">
+                            <h3 class="section-title">
+                                <i class="fa-solid fa-credit-card"></i>
+                                Información de Pago
+                            </h3>
+                            
+                            <form id="form-pago" class="checkout-form">
+                                <div class="payment-method-selector">
+                                    <div class="payment-option active" data-method="webpay">
+                                        <i class="fa-solid fa-credit-card"></i>
+                                        <span>Pagar con Webpay (Simulado)</span>
+                                        <div class="webpay-logo">
+                                            <i class="fa-solid fa-shield-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="payment-form" id="webpay-form">
+                                    <div class="form-group">
+                                        <label for="numero-tarjeta">Número de tarjeta *</label>
+                                        <input type="text" id="numero-tarjeta" name="numeroTarjeta" 
+                                               placeholder="1234 5678 9012 3456" maxlength="19" required>
+                                        <div class="card-icons">
+                                            <i class="fa-brands fa-cc-visa"></i>
+                                            <i class="fa-brands fa-cc-mastercard"></i>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="fecha-vencimiento">Fecha de vencimiento *</label>
+                                                <input type="text" id="fecha-vencimiento" name="fechaVencimiento" 
+                                                       placeholder="MM/AA" maxlength="5" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="cvv">CVV *</label>
+                                                <input type="text" id="cvv" name="cvv" 
+                                                       placeholder="123" maxlength="3" required>
+                                                <small class="form-help">
+                                                    <i class="fa-solid fa-question-circle"></i>
+                                                    3 dígitos en el reverso de tu tarjeta
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="nombre-titular">Nombre del titular *</label>
+                                        <input type="text" id="nombre-titular" name="nombreTitular" 
+                                               placeholder="Como aparece en la tarjeta" required>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumen del pedido -->
+                <div class="col-lg-4">
+                    <div class="order-summary">
+                        <h3 class="summary-title">Resumen del Pedido</h3>
+                        
+                        <div class="summary-products" id="summary-products">
+                            <!-- Los productos se cargarán dinámicamente -->
+                        </div>
+                        
+                        <div class="summary-totals">
+                            <div class="total-line">
+                                <span>Subtotal:</span>
+                                <span id="summary-subtotal">$0</span>
+                            </div>
+                            <div class="total-line">
+                                <span>Envío:</span>
+                                <span id="summary-envio">$3.000</span>
+                            </div>
+                            <div class="total-line discount-line" id="summary-discount-line" style="display: none;">
+                                <span>Descuento:</span>
+                                <span id="summary-descuento">-$0</span>
+                            </div>
+                            <div class="total-line final-total">
+                                <span>Total:</span>
+                                <span id="summary-total">$0</span>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="btn-finalizar-compra" id="btn-finalizar-compra">
+                            <i class="fa-solid fa-lock"></i>
+                            Finalizar Compra
+                        </button>
+                        
+                        <div class="security-info">
+                            <i class="fa-solid fa-shield-alt"></i>
+                            <span>Compra 100% segura y protegida</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de procesamiento -->
+    <div class="modal-overlay" id="modal-procesando">
+        <div class="modal-content processing-modal">
+            <div class="processing-animation">
+                <div class="spinner"></div>
+                <h3>Procesando tu pago...</h3>
+                <p>Por favor espera mientras validamos tu información</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

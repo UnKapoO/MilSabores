@@ -30,10 +30,10 @@
                     </div>
                     
                     <div class="usuario-carrito">
-                        <button class="btn-usuario">
+                        <button class="btn-usuario" onclick="window.location.href='login.html'">
                             <i class="fa-solid fa-user"></i>
                         </button>
-                        <button class="btn-carrito">
+                        <button class="btn-carrito" onclick="window.location.href='carrito.html'">
                             <i class="fa-solid fa-cart-shopping"></i>
                             <span class="carrito-texto">Carrito</span>
                             <span class="cart-count">0</span>
@@ -51,10 +51,10 @@
                         <ul>
                             <li><a href="index.html" class="active">INICIO</a></li>
                             <li><a href="catalogo.html">CATÁLOGO</a></li>
-                            <li><a href="#">TORTAS ESPECIALES</a></li>
-                            <li><a href="#">SIN AZÚCAR</a></li>
-                            <li><a href="#">VEGANO</a></li>
-                            <li><a href="#">BLOG</a></li>
+                            <li><a href="catalogo.html?categoria=especiales">TORTAS ESPECIALES</a></li>
+                            <li><a href="catalogo.html?categoria=sin-azucar">SIN AZÚCAR</a></li>
+                            <li><a href="catalogo.html?categoria=vegana">VEGANO</a></li>
+                            <li><a href="blog.html">BLOG</a></li>
                         </ul>
                     </nav>
                     
@@ -84,10 +84,10 @@
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="catalogo.html">Catálogo</a></li>
-                    <li><a href="#">Tortas Especiales</a></li>
-                    <li><a href="#">Sin Azúcar</a></li>
-                    <li><a href="#">Vegano</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="catalogo.html?categoria=especiales">Tortas Especiales</a></li>
+                    <li><a href="catalogo.html?categoria=sin-azucar">Sin Azúcar</a></li>
+                    <li><a href="catalogo.html?categoria=vegana">Vegano</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                 </ul>
             </nav>
         </div>
@@ -96,8 +96,8 @@
     <!-- Agregando banner hero principal -->
     <section class="banner">
         <div class="content-banner">
-            <p>Dulces Artesanales</p>
-            <h2>100% Natural <br />Sabores Únicos</h2>
+            <p>Postres, tortas, dulces</p>
+            <h2>Sabores Únicos</h2>
             <a href="catalogo.html">Ver Catálogo</a>
         </div>
     </section>
@@ -106,13 +106,6 @@
     <main class="main-content">
         <!-- Sección de características -->
         <section class="container container-features">
-            <div class="card-feature">
-                <i class="fa-solid fa-truck"></i>
-                <div class="feature-content">
-                    <span>Envío gratuito</span>
-                    <p>En pedidos superiores a $30.000</p>
-                </div>
-            </div>
             <div class="card-feature">
                 <i class="fa-solid fa-shield-halved"></i>
                 <div class="feature-content">
@@ -132,6 +125,13 @@
                 <div class="feature-content">
                     <span>Atención 24/7</span>
                     <p>Contáctanos cuando necesites</p>
+                </div>
+            </div>
+            <div class="card-feature">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div class="feature-content">
+                    <span>Programa tu envío</span>
+                    <p>Tu pedido en 24 horas</p>
                 </div>
             </div>
         </section>
@@ -159,29 +159,11 @@
         <section class="container top-products">
             <h1 class="heading-1">Productos Destacados</h1>
 
-            <div class="container-options">
-                <span class="active">Más Vendidos</span>
-                <span>Nuevos</span>
-                <span>Especiales</span>
-            </div>
-
             <div class="container-products">
                 <!-- Producto 1 -->
                 <div class="card-product">
                     <div class="container-img">
-                        <img src="public/torta-cuadrada-chocolate-ganache.jpg" alt="Torta Chocolate Ganache" />
-                        <span class="discount">-15%</span>
-                        <div class="button-group">
-                            <span>
-                                <i class="fa-regular fa-eye"></i>
-                            </span>
-                            <span>
-                                <i class="fa-regular fa-heart"></i>
-                            </span>
-                            <span>
-                                <i class="fa-solid fa-code-compare"></i>
-                            </span>
-                        </div>
+                        <img src="img/torta-cuadrada-chocolate-ganache.jpg" alt="Torta Chocolate Ganache" />
                     </div>
                     <div class="content-card-product">
                         <div class="stars">
@@ -195,24 +177,13 @@
                         <span class="add-cart">
                             <i class="fa-solid fa-basket-shopping"></i>
                         </span>
-                        <p class="price">$25.500 <span>$30.000</span></p>
+                        <p class="price">$45.500 </p>
                     </div>
                 </div>
                 <!-- Producto 2 -->
                 <div class="card-product">
                     <div class="container-img">
-                        <img src="public/torta-circular-vainilla-glaseado.jpg" alt="Torta Vainilla Glaseado" />
-                        <div class="button-group">
-                            <span>
-                                <i class="fa-regular fa-eye"></i>
-                            </span>
-                            <span>
-                                <i class="fa-regular fa-heart"></i>
-                            </span>
-                            <span>
-                                <i class="fa-solid fa-code-compare"></i>
-                            </span>
-                        </div>
+                        <img src="img/torta-circular-vainilla.jpg" alt="Torta Vainilla Glaseado" />
                     </div>
                     <div class="content-card-product">
                         <div class="stars">
@@ -232,18 +203,7 @@
                 <!-- Producto 3 -->
                 <div class="card-product">
                     <div class="container-img">
-                        <img src="public/mousse-chocolate-cremoso-individual.jpg" alt="Mousse Chocolate" />
-                        <div class="button-group">
-                            <span>
-                                <i class="fa-regular fa-eye"></i>
-                            </span>
-                            <span>
-                                <i class="fa-regular fa-heart"></i>
-                            </span>
-                            <span>
-                                <i class="fa-solid fa-code-compare"></i>
-                            </span>
-                        </div>
+                        <img src="img/mousse-chocolate-cremoso-individual.jpg" alt="Mousse Chocolate" />
                     </div>
                     <div class="content-card-product">
                         <div class="stars">
@@ -263,19 +223,7 @@
                 <!-- Producto 4 -->
                 <div class="card-product">
                     <div class="container-img">
-                        <img src="public/tiramisu-italiano-cafe-mascarpone.jpg" alt="Tiramisú" />
-                        <span class="discount">-10%</span>
-                        <div class="button-group">
-                            <span>
-                                <i class="fa-regular fa-eye"></i>
-                            </span>
-                            <span>
-                                <i class="fa-regular fa-heart"></i>
-                            </span>
-                            <span>
-                                <i class="fa-solid fa-code-compare"></i>
-                            </span>
-                        </div>
+                        <img src="img/tiramisu-italiano-cafe-mascarpone.jpg" alt="Tiramisú" />
                     </div>
                     <div class="content-card-product">
                         <div class="stars">
@@ -289,7 +237,7 @@
                         <span class="add-cart">
                             <i class="fa-solid fa-basket-shopping"></i>
                         </span>
-                        <p class="price">$5.400 <span>$6.000</span></p>
+                        <p class="price">$5.400</p>
                     </div>
                 </div>
             </div>
@@ -297,11 +245,11 @@
 
         <!-- Galería de imágenes -->
         <section class="gallery">
-            <img src="/placeholder.svg?height=300&width=400" alt="Interior Pastelería" class="gallery-img-1" />
-            <img src="/placeholder.svg?height=300&width=400" alt="Chef Decorando" class="gallery-img-2" />
-            <img src="/placeholder.svg?height=600&width=800" alt="Vitrina Principal" class="gallery-img-3" />
-            <img src="/placeholder.svg?height=300&width=400" alt="Ingredientes Frescos" class="gallery-img-4" />
-            <img src="/placeholder.svg?height=300&width=400" alt="Tortas Personalizadas" class="gallery-img-5" />
+            <img src="img/interior-pasteleria.jpg" alt="Interior Pastelería" class="gallery-img-1" />
+            <img src="img/chef-decorando.jpg" alt="Chef Decorando" class="gallery-img-2" />
+            <img src="img/vitrina-principal.jpg" alt="Vitrina Principal" class="gallery-img-3" />
+            <img src="img/ingredientes-frescos.jpg" alt="Ingredientes Frescos" class="gallery-img-4" />
+            <img src="img/tortas-personalizadas.jpg" alt="Tortas Personalizadas" class="gallery-img-5" />
         </section>
 
         <!-- Sección sobre nosotros -->
@@ -309,13 +257,13 @@
             <h1 class="heading-1">Sobre Nosotros</h1>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Más de 20 años endulzando vidas</h3>
-                    <p>En Pastelería 1000 Sabores, cada creación es una obra de arte comestible. Utilizamos ingredientes premium y técnicas artesanales para crear postres que no solo deleitan el paladar, sino que también crean momentos inolvidables.</p>
+                    <h3>Más de 50 años endulzando vidas</h3>
+                    <p>En Pastelería Mil Sabores, cada creación es una obra de arte comestible. Utilizamos ingredientes premium y técnicas artesanales para crear postres que no solo deleitan el paladar, sino que también crean momentos inolvidables.</p>
                     <p>Nuestro equipo de maestros pasteleros combina tradición e innovación para ofrecerte sabores únicos que han conquistado el corazón de miles de familias.</p>
                     <a href="#" class="btn-conocer-mas">Conocer más</a>
                 </div>
                 <div class="about-image">
-                    <img src="/placeholder.svg?height=400&width=500" alt="Maestro Pastelero" />
+                    <img src="img/maestro-pastelero.jpg" alt="Maestro Pastelero" />
                 </div>
             </div>
         </section>
@@ -327,7 +275,7 @@
             <div class="container-blogs">
                 <div class="card-blog">
                     <div class="container-img">
-                        <img src="/placeholder.svg?height=250&width=350" alt="Tendencias 2024" />
+                        <img src="img/tendencia-noticia.jpg" alt="Tendencias 2025" />
                         <div class="button-group-blog">
                             <span>
                                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -338,8 +286,8 @@
                         </div>
                     </div>
                     <div class="content-blog">
-                        <h3>Tendencias en Pastelería 2024</h3>
-                        <span>15 Enero 2024</span>
+                        <h3>Tendencias en Pastelería 2025</h3>
+                        <span>15 Enero 2025</span>
                         <p>
                             Descubre las últimas tendencias en decoración y sabores que están revolucionando el mundo de la pastelería. Desde técnicas innovadoras hasta ingredientes exóticos que transformarán tus celebraciones.
                         </p>
@@ -348,7 +296,7 @@
                 </div>
                 <div class="card-blog">
                     <div class="container-img">
-                        <img src="/placeholder.svg?height=250&width=350" alt="Recetas Saludables" />
+                        <img src="img/receta-saludable.jpg" alt="Recetas Saludables" />
                         <div class="button-group-blog">
                             <span>
                                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -360,7 +308,7 @@
                     </div>
                     <div class="content-blog">
                         <h3>Postres Saludables Sin Azúcar</h3>
-                        <span>10 Enero 2024</span>
+                        <span>10 Enero 2025</span>
                         <p>
                             Conoce nuestra nueva línea de postres sin azúcar añadida, perfectos para diabéticos y personas que cuidan su alimentación. Deliciosos sabores sin comprometer la salud.
                         </p>
@@ -369,7 +317,7 @@
                 </div>
                 <div class="card-blog">
                     <div class="container-img">
-                        <img src="/placeholder.svg?height=250&width=350" alt="Tortas de Boda" />
+                        <img src="img/tortas-personalizadas-boda.jpg" alt="Tortas de Boda" />
                         <div class="button-group-blog">
                             <span>
                                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -381,7 +329,7 @@
                     </div>
                     <div class="content-blog">
                         <h3>Tortas de Boda Personalizadas</h3>
-                        <span>5 Enero 2024</span>
+                        <span>5 Enero 2025</span>
                         <p>
                             Haz de tu día especial algo único con nuestras tortas de boda completamente personalizadas. Diseños exclusivos que reflejan tu personalidad y estilo.
                         </p>
@@ -392,82 +340,99 @@
         </section>
     </main>
 
-    <!-- Agregando footer completo -->
-    <footer class="footer">
-        <div class="container container-footer">
-            <div class="menu-footer">
-                <div class="contact-info">
-                    <p class="title-footer">Información de Contacto</p>
-                    <ul>
-                        <li>Dirección: Av. Providencia 1234, Santiago, Chile</li>
-                        <li>Teléfono: +56 2 2345-6789</li>
-                        <li>WhatsApp: +56 9 8765-4321</li>
-                        <li>Email: contacto@1000sabores.cl</li>
-                    </ul>
-                    <div class="social-icons">
-                        <span class="facebook">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </span>
-                        <span class="twitter">
-                            <i class="fa-brands fa-twitter"></i>
-                        </span>
-                        <span class="youtube">
-                            <i class="fa-brands fa-youtube"></i>
-                        </span>
-                        <span class="pinterest">
-                            <i class="fa-brands fa-pinterest-p"></i>
-                        </span>
-                        <span class="instagram">
+    <!-- Footer modular para todas las páginas -->
+    <footer class="footer-principal">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Información de la empresa -->
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="img/logo.jpg" alt="Mil Sabores Logo">
+                        <span class="pacifico-regular">Mil Sabores</span>
+                    </div>
+                    <p class="footer-descripcion">
+                        Desde 1975 creando momentos dulces y memorables. Tradición familiar en cada bocado.
+                    </p>
+                    <div class="footer-redes">
+                        <a href="#" class="red-social" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                        <a href="#" class="red-social" aria-label="Instagram">
                             <i class="fa-brands fa-instagram"></i>
-                        </span>
+                        </a>
+                        <a href="#" class="red-social" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="red-social" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
                     </div>
                 </div>
 
-                <div class="information">
-                    <p class="title-footer">Información</p>
-                    <ul>
-                        <li><a href="#">Acerca de Nosotros</a></li>
-                        <li><a href="#">Información de Envío</a></li>
-                        <li><a href="#">Políticas de Privacidad</a></li>
-                        <li><a href="#">Términos y Condiciones</a></li>
-                        <li><a href="#">Contáctanos</a></li>
+                <!-- Enlaces rápidos -->
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="catalogo.html">Catálogo</a></li>
+                        <li><a href="catalogo.html?categoria=especiales">Tortas Especiales</a></li>
+                        <li><a href="blog.html">Blog y Noticias</a></li>
+                        <li><a href="carrito.html">Mi Carrito</a></li>
                     </ul>
                 </div>
 
-                <div class="my-account">
-                    <p class="title-footer">Mi Cuenta</p>
-                    <ul>
-                        <li><a href="login.html">Mi Cuenta</a></li>
-                        <li><a href="#">Historial de Pedidos</a></li>
-                        <li><a href="#">Lista de Deseos</a></li>
-                        <li><a href="#">Newsletter</a></li>
-                        <li><a href="#">Devoluciones</a></li>
+                <!-- Categorías -->
+                <div class="footer-section">
+                    <h4>Nuestros Productos</h4>
+                    <ul class="footer-links">
+                        <li><a href="catalogo.html?categoria=tortas-cuadradas">Tortas Cuadradas</a></li>
+                        <li><a href="catalogo.html?categoria=tortas-circulares">Tortas Circulares</a></li>
+                        <li><a href="catalogo.html?categoria=postres-individuales">Postres Individuales</a></li>
+                        <li><a href="catalogo.html?categoria=sin-azucar">Sin Azúcar</a></li>
+                        <li><a href="catalogo.html?categoria=vegana">Productos Veganos</a></li>
                     </ul>
                 </div>
 
-                <div class="newsletter">
-                    <p class="title-footer">Newsletter</p>
-                    <div class="content">
-                        <p>
-                            Suscríbete a nuestro newsletter y mantente al día con nuevas creaciones y ofertas exclusivas.
-                        </p>
-                        <input type="email" placeholder="Ingresa tu correo aquí...">
-                        <button>Suscríbete</button>
+                <!-- Información de contacto -->
+                <div class="footer-section">
+                    <h4>Contáctanos</h4>
+                    <div class="footer-contacto">
+                        <div class="contacto-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Av. Principal 123, Concepción, Chile</span>
+                        </div>
+                        <div class="contacto-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+56 9 99999999</span>
+                        </div>
+                        <div class="contacto-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>contacto@milsabores.cl</span>
+                        </div>
+                        <div class="contacto-item">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>Lun-Dom: 8:00 AM - 9:00 PM</span>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="copyright">
-                <p>
-                    Desarrollado para Pastelería 1000 Sabores &copy; 2025
-                </p>
-                <img src="/placeholder.svg?height=30&width=200" alt="Métodos de Pago">
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 Pastelería Mil Sabores. Todos los derechos reservados.</p>
+                    <p>Hecho con <i class="fa-solid fa-heart"></i> en Concepción, Chile</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#" class="link-legal">Términos y Condiciones</a>
+                    <a href="#" class="link-legal">Política de Privacidad</a>
+                    <a href="#" class="link-legal">Política de Cookies</a>
+                </div>
             </div>
         </div>
     </footer>
     
     <script src="js/header.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/footer.js"></script>
 </body>
 </html>
-

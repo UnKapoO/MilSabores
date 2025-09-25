@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog y Noticias - Pastelería Mil Sabores</title>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+
+<body>
+
+    <!-- Header de dos niveles -->
+    <header class="header-doble">
+        <!-- Header superior con información de contacto, logo y carrito -->
+        <div class="header-superior">
+            <div class="container">
+                <div class="header-superior-content">
+                    <div class="contacto-info">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Soporte al cliente</span>
+                        <span class="telefono">+56 9 99999999</span>
+                    </div>
+
+                    <div class="logo-principal">
+                        <img src="img/logo.jpg" alt="logo">
+                        <span class="pacifico-regular">Mil Sabores</span>
+                    </div>
+
+                    <div class="usuario-carrito">
+                        <button class="btn-usuario" onclick="window.location.href='login.html'">
+                            <i class="fa-solid fa-user"></i>
+                        </button>
+                        <button class="btn-carrito" onclick="window.location.href='carrito.html'">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="carrito-texto">Carrito</span>
+                            <span class="cart-count">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header inferior con navegación y búsqueda -->
+        <div class="header-inferior">
+            <div class="container">
+                <div class="header-inferior-content">
+                    <nav class="navegacion-principal">
+                        <ul>
+                            <li><a href="index.html">INICIO</a></li>
+                            <li><a href="catalogo.html">CATÁLOGO</a></li>
+                            <li><a href="catalogo.html?categoria=especiales">TORTAS ESPECIALES</a></li>
+                            <li><a href="catalogo.html?categoria=sin-azucar">SIN AZÚCAR</a></li>
+                            <li><a href="catalogo.html?categoria=vegana">VEGANO</a></li>
+                            <li><a href="blog.html" class="active">BLOG</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="busqueda-header">
+                        <input type="text" placeholder="Buscar..." class="input-busqueda-header">
+                        <button class="btn-buscar">
+                            <i class="fa-solid fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú móvil -->
+        <button class="btn-menu-movil">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="menu-movil">
+            <div class="menu-movil-header">
+                <span class="pacifico-regular">Mil Sabores</span>
+                <button class="btn-cerrar-menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <nav class="navegacion-movil">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="catalogo.html?categoria=especiales">Tortas Especiales</a></li>
+                    <li><a href="catalogo.html?categoria=sin-azucar">Sin Azúcar</a></li>
+                    <li><a href="catalogo.html?categoria=vegana">Vegano</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal del blog -->
+    <main class="blog-main">
+        <div class="container">
+            <!-- Hero section del blog -->
+            <section class="blog-hero">
+                <h1 class="pacifico-regular">Blog y Noticias</h1>
+                <p class="lato-regular">Descubre las últimas tendencias en pastelería, recetas exclusivas y noticias de nuestra pastelería</p>
+            </section>
+
+            <!-- Filtros del blog -->
+            <section class="blog-filtros">
+                <div class="filtros-container">
+                    <button class="filtro-blog-btn active" data-categoria="todas">Todas</button>
+                    <button class="filtro-blog-btn" data-categoria="recetas">Recetas</button>
+                    <button class="filtro-blog-btn" data-categoria="noticias">Noticias</button>
+                    <button class="filtro-blog-btn" data-categoria="consejos">Consejos</button>
+                    <button class="filtro-blog-btn" data-categoria="eventos">Eventos</button>
+                </div>
+            </section>
+
+            <!-- Grid de artículos -->
+            <section class="blog-articulos">
+                <div class="articulos-grid" id="articulos-grid">
+                    <!-- Los artículos se cargarán dinámicamente con JavaScript -->
+                </div>
+
+                <!-- Mensaje cuando no hay artículos -->
+                <div class="no-articulos" id="no-articulos" style="display: none;">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <h3>No se encontraron artículos</h3>
+                    <p>Intenta con otros filtros o vuelve más tarde</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal para leer artículo completo -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-body" id="modal-body">
+                <!-- Contenido del modal se carga dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/header.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="js/footer.js"></script>
+</body>
+
+</html>

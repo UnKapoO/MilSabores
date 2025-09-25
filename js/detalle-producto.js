@@ -6,7 +6,7 @@ const productosData = [
         nombre: "Torta Cuadrada de Chocolate",
         precio: 45000,
         descripcion:
-        "Deliciosa torta de chocolate con capas de ganache y un toque de avellanas. Personalizable con mensajes especiales.",
+            "Deliciosa torta de chocolate con capas de ganache y un toque de avellanas. Personalizable con mensajes especiales.",
         imagen: "img/torta-cuadrada-chocolate-ganache.jpg",
         icono: "fa-solid fa-birthday-cake",
     },
@@ -16,7 +16,7 @@ const productosData = [
         nombre: "Torta Cuadrada de Frutas",
         precio: 50000,
         descripcion:
-        "Una mezcla de frutas frescas y crema chantilly sobre un suave bizcocho de vainilla, ideal para celebraciones.",
+            "Una mezcla de frutas frescas y crema chantilly sobre un suave bizcocho de vainilla, ideal para celebraciones.",
         imagen: "img/torta-cuadrada-frutas-crema-chantilly.jpg",
         icono: "fa-solid fa-birthday-cake",
     },
@@ -28,8 +28,8 @@ const productosData = [
         nombre: "Torta Circular de Vainilla",
         precio: 40000,
         descripcion:
-        "Bizcocho de vainilla clásico relleno con crema pastelera y cubierto con un glaseado dulce, perfecto para cualquier ocasión.",
-        imagen: "img/torta-circular-vainilla-glaseado.jpg",
+            "Bizcocho de vainilla clásico relleno con crema pastelera y cubierto con un glaseado dulce, perfecto para cualquier ocasión.",
+        imagen: "img/torta-circular-vainilla.jpg",
         icono: "fa-solid fa-birthday-cake",
     },
     {
@@ -38,8 +38,8 @@ const productosData = [
         nombre: "Torta Circular de Manjar",
         precio: 42000,
         descripcion:
-        "Torta tradicional chilena con manjar y nueces, un deleite para los amantes de los sabores dulces y clásicos.",
-        imagen: "img/torta-circular-manjar-nueces-chilena.jpg",
+            "Torta tradicional chilena con manjar y nueces, un deleite para los amantes de los sabores dulces y clásicos.",
+        imagen: "img/torta-circular-manjar.jpg",
         icono: "fa-solid fa-birthday-cake",
     },
 
@@ -50,7 +50,7 @@ const productosData = [
         nombre: "Mousse de Chocolate",
         precio: 5000,
         descripcion:
-        "Postre individual cremoso y suave, hecho con chocolate de alta calidad, ideal para los amantes del chocolate.",
+            "Postre individual cremoso y suave, hecho con chocolate de alta calidad, ideal para los amantes del chocolate.",
         imagen: "img/mousse-chocolate-cremoso-individual.jpg",
         icono: "fa-solid fa-ice-cream",
     },
@@ -60,7 +60,7 @@ const productosData = [
         nombre: "Tiramisú Clásico",
         precio: 5500,
         descripcion:
-        "Un postre italiano individual con capas de café, mascarpone y cacao, perfecto para finalizar cualquier comida.",
+            "Un postre italiano individual con capas de café, mascarpone y cacao, perfecto para finalizar cualquier comida.",
         imagen: "img/tiramisu-italiano-cafe-mascarpone.jpg",
         icono: "fa-solid fa-ice-cream",
     },
@@ -92,7 +92,7 @@ const productosData = [
         nombre: "Empanada de Manzana",
         precio: 3000,
         descripcion: "Pastelería tradicional rellena de manzanas especiadas, perfecta para un dulce desayuno o merienda.",
-        imagen: "img/empanadas-manzana",
+        imagen: "img/empanadas-manzana.jpg",
         icono: "fa-solid fa-bread-slice",
     },
     {
@@ -101,7 +101,7 @@ const productosData = [
         nombre: "Tarta de Santiago",
         precio: 6000,
         descripcion:
-        "Tradicional tarta española hecha con almendras, azúcar, y huevos, una delicia para los amantes de los postres clásicos.",
+            "Tradicional tarta española hecha con almendras, azúcar, y huevos, una delicia para los amantes de los postres clásicos.",
         imagen: "img/tarta-santiago-almendras-espa-ola.jpg",
         icono: "fa-solid fa-bread-slice",
     },
@@ -113,7 +113,7 @@ const productosData = [
         nombre: "Brownie Sin Gluten",
         precio: 4000,
         descripcion:
-        "Rico y denso, este brownie es perfecto para quienes necesitan evitar el gluten sin sacrificar el sabor.",
+            "Rico y denso, este brownie es perfecto para quienes necesitan evitar el gluten sin sacrificar el sabor.",
         imagen: "img/brownie-sin-gluten-denso-chocolate.jpg",
         icono: "fa-solid fa-wheat-awn-circle-exclamation",
     },
@@ -168,14 +168,36 @@ const productosData = [
     },
 ]
 
-    const productos = productosData
+const productos = productosData
 
-    // Variables globales
-    let productoActual = null
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || []
+// Variables globales
+let productoActual = null
+const carrito = JSON.parse(localStorage.getItem("carrito")) || []
 
-    // 1. Función para renderizar el producto en el HTML
-    function mostrarProducto(producto) {
+// Función para agregar producto directamente al carrito
+function agregarProductoDirecto(codigoProducto) {
+    const producto = productos.find((p) => p.codigo === codigoProducto)
+    if (!producto) return
+
+    const itemExistente = carrito.find((item) => item.codigo === codigoProducto)
+
+    if (itemExistente) {
+        itemExistente.cantidad += 1
+    } else {
+        carrito.push({
+            ...producto,
+            cantidad: 1,
+        })
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+    actualizarContadorCarrito()
+
+    mostrarNotificacion(`${producto.nombre} agregada al carrito`)
+}
+
+// 1. Función para renderizar el producto en el HTML
+function mostrarProducto(producto) {
     if (!producto) {
         mostrarErrorProducto()
         return
@@ -210,10 +232,10 @@ const productosData = [
 
     // Agregar animación de entrada
     document.querySelector(".container").classList.add("fade-in")
-    }
+}
 
-    // 2. Función para obtener el nombre de la categoría
-    function obtenerNombreCategoria(categoria) {
+// 2. Función para obtener el nombre de la categoría
+function obtenerNombreCategoria(categoria) {
     const categorias = {
         "tortas-cuadradas": "Tortas Cuadradas",
         "tortas-circulares": "Tortas Circulares",
@@ -225,10 +247,10 @@ const productosData = [
         especiales: "Especiales",
     }
     return categorias[categoria] || "Desconocida"
-    }
+}
 
-    // 3. Función para mostrar error cuando no se encuentra el producto
-    function mostrarErrorProducto() {
+// 3. Función para mostrar error cuando no se encuentra el producto
+function mostrarErrorProducto() {
     document.getElementById("nombre-producto").textContent = "Producto no encontrado"
     document.getElementById("precio-producto").textContent = ""
     document.getElementById("descripcion-producto").textContent =
@@ -239,16 +261,16 @@ const productosData = [
 
     const btnAgregar = document.getElementById("btn-agregar-carrito")
     btnAgregar.style.display = "none"
-    }
+}
 
-    // 4. Función para obtener productos aleatorios para "También te puede interesar"
-    function obtenerRecomendados(lista, productoActual, cantidad = 6) {
+// 4. Función para obtener productos aleatorios para "También te puede interesar"
+function obtenerRecomendados(lista, productoActual, cantidad = 6) {
     const listaFiltrada = productoActual ? lista.filter((p) => p.codigo !== productoActual.codigo) : lista
     return listaFiltrada.sort(() => Math.random() - 0.5).slice(0, cantidad)
-    }
+}
 
-    // 5. Renderizar los productos recomendados
-    function renderizarRecomendados(productoActual) {
+// 5. Renderizar los productos recomendados
+function renderizarRecomendados(productoActual) {
     const contenedorRecomendados = document.getElementById("recomendados")
     const recomendados = obtenerRecomendados(productos, productoActual, 6)
     let htmlRecomendados = ""
@@ -268,10 +290,10 @@ const productosData = [
             `
     })
     contenedorRecomendados.innerHTML = htmlRecomendados
-    }
+}
 
-    // 6. Lógica principal para cargar el producto
-    function cargarProducto() {
+// 6. Lógica principal para cargar el producto
+function cargarProducto() {
     // Mostrar estado de carga
     document.querySelector(".container").classList.add("loading")
 
@@ -302,10 +324,10 @@ const productosData = [
         // Actualizar contador del carrito
         actualizarContadorCarrito()
     }, 300)
-    }
+}
 
-    // 7. Función para agregar al carrito (integrada con el sistema existente)
-    function agregarAlCarrito(codigoProducto) {
+// 7. Función para agregar al carrito (integrada con el sistema existente)
+function agregarAlCarrito(codigoProducto) {
     const producto = productos.find((p) => p.codigo === codigoProducto)
     if (!producto) return
 
@@ -318,94 +340,253 @@ const productosData = [
         // Para productos que no son tortas, agregar directamente
         agregarProductoDirecto(codigoProducto)
     }
-    }
+}
 
-    // 8. Funciones del sistema de personalización (copiadas del catálogo)
-    function mostrarModalPersonalizacion(codigoProducto) {
+// 8. Funciones del sistema de personalización (copiadas del catálogo)
+function mostrarModalPersonalizacion(codigoProducto) {
     const producto = productos.find((p) => p.codigo === codigoProducto)
-    if (!producto) return
+    if (!producto) {
+        console.error("Producto no encontrado:", codigoProducto)
+        return
+    }
 
     // Crear modal de confirmación
     const modalConfirmacion = document.createElement("div")
     modalConfirmacion.className = "modal-confirmacion-overlay"
     modalConfirmacion.innerHTML = `
-            <div class="modal-confirmacion">
-                <div class="modal-confirmacion-header">
-                    <h3>¿Deseas personalizar tu torta?</h3>
-                    <button class="modal-close-btn" onclick="cerrarModalConfirmacion()">&times;</button>
-                </div>
-                <div class="modal-confirmacion-body">
-                    <div class="producto-preview">
-                        <img src="${producto.imagen}" alt="${producto.nombre}">
-                        <div>
-                            <h4>${producto.nombre}</h4>
-                            <p class="precio">$${producto.precio.toLocaleString("es-CL")}</p>
-                        </div>
-                    </div>
-                    <p>Las tortas pueden personalizarse con mensaje especial, cantidad de personas y color del glaseado.</p>
-                </div>
-                <div class="modal-confirmacion-footer">
-                    <button class="btn-secundario" onclick="agregarSinPersonalizar('${codigoProducto}')">
-                        No, agregar con valores por defecto
-                    </button>
-                    <button class="btn-primario" onclick="abrirFormularioPersonalizacion('${codigoProducto}')">
-                        Sí, personalizar mi torta
-                    </button>
-                </div>
+        <div class="modal-confirmacion">
+            <div class="modal-confirmacion-header">
+                <h3>¿Deseas personalizar tu torta?</h3>
+                <button class="modal-close-btn" onclick="cerrarModalConfirmacion()">&times;</button>
             </div>
-        `
+            <div class="modal-confirmacion-body">
+                <div class="producto-preview">
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                    <div>
+                        <h4>${producto.nombre}</h4>
+                        <p class="precio">${formatearPrecio(producto.precio)}</p>
+                    </div>
+                </div>
+                <p>Las tortas pueden personalizarse con mensaje especial, cantidad de personas y color del glaseado.</p>
+            </div>
+            <div class="modal-confirmacion-footer">
+                <button class="btn-secundario" onclick="agregarSinPersonalizar('${codigoProducto}')">
+                    No, agregar con valores por defecto
+                </button>
+                <button class="btn-primario" onclick="abrirFormularioPersonalizacion('${codigoProducto}')">
+                    Sí, personalizar mi torta
+                </button>
+            </div>
+        </div>
+    `
 
     document.body.appendChild(modalConfirmacion)
     document.body.style.overflow = "hidden"
-    }
+}
 
-    function cerrarModalConfirmacion() {
+function cerrarModalConfirmacion() {
     const modal = document.querySelector(".modal-confirmacion-overlay")
     if (modal) {
         document.body.removeChild(modal)
         document.body.style.overflow = "auto"
     }
-    }
+}
 
-    function agregarSinPersonalizar(codigoProducto) {
+function agregarSinPersonalizar(codigoProducto) {
     cerrarModalConfirmacion()
     agregarProductoDirecto(codigoProducto)
+}
+
+function abrirFormularioPersonalizacion(codigoProducto) {
+    cerrarModalConfirmacion()
+    const producto = productos.find((p) => p.codigo === codigoProducto)
+    if (!producto) {
+        console.error("Producto no encontrado para personalización:", codigoProducto)
+        return
     }
 
-    function agregarProductoDirecto(codigoProducto) {
+    const modalPersonalizacion = document.createElement("div")
+    modalPersonalizacion.className = "modal-personalizacion-overlay"
+    modalPersonalizacion.innerHTML = `
+    <div class="modal-personalizacion">
+        <div class="modal-personalizacion-header">
+        <h3>Personalizar ${producto.nombre}</h3>
+        <button class="modal-close-btn" onclick="cerrarModalPersonalizacion()">&times;</button>
+      </div>
+      <div class="modal-personalizacion-body">
+        <div class="producto-info">
+          <img src="${producto.imagen}" alt="${producto.nombre}">
+          <div>
+            <h4>${producto.nombre}</h4>
+            <p class="precio-base">Precio base: ${formatearPrecio(producto.precio)}</p>
+          </div>
+        </div>
+        
+        <form id="form-personalizacion" class="form-personalizacion">
+          <div class="campo-grupo">
+            <label for="cantidad-personas">Cantidad de personas *</label>
+            <select id="cantidad-personas" required>
+              <option value="">Selecciona el tamaño</option>
+              <option value="pequeno" data-precio="0.8">Pequeño (4-6 personas) - 20% menos</option>
+              <option value="estandar" data-precio="1" selected>Estándar (${producto.cantidadPersonas}) - Precio base</option>
+              <option value="grande" data-precio="1.3">Grande (12-15 personas) - 30% más</option>
+              <option value="extra-grande" data-precio="1.6">Extra Grande (18-20 personas) - 60% más</option>
+            </select>
+            <span class="error-mensaje" id="error-cantidad"></span>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="mensaje-especial">Mensaje especial (opcional)</label>
+            <input type="text" id="mensaje-especial" maxlength="50" placeholder="Ej: Feliz Cumpleaños María">
+            <small class="contador-caracteres">0/50 caracteres</small>
+            <span class="error-mensaje" id="error-mensaje"></span>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="color-glaseado">Color del glaseado *</label>
+            <select id="color-glaseado" required>
+              <option value="">Selecciona un color</option>
+              <option value="blanco">Blanco clásico</option>
+              <option value="chocolate">Chocolate</option>
+              <option value="rosa">Rosa</option>
+              <option value="azul">Azul</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="verde">Verde</option>
+              <option value="morado">Morado</option>
+            </select>
+            <span class="error-mensaje" id="error-color"></span>
+          </div>
+
+          <div class="precio-final">
+            <strong>Precio final: <span id="precio-calculado">${formatearPrecio(producto.precio)}</span></strong>
+          </div>
+        </form>
+      </div>
+      <div class="modal-personalizacion-footer">
+        <button type="button" class="btn-secundario" onclick="cerrarModalPersonalizacion()">
+          Cancelar
+        </button>
+        <button type="button" class="btn-primario" onclick="validarYAgregarPersonalizado('${codigoProducto}')">
+          Agregar al carrito
+        </button>
+      </div>
+    </div>
+  `
+
+    document.body.appendChild(modalPersonalizacion)
+    document.body.style.overflow = "hidden"
+
+    // Configurar eventos para el formulario
+    configurarEventosPersonalizacion(producto.precio)
+}
+
+function configurarEventosPersonalizacion(precioBase) {
+    const cantidadSelect = document.getElementById("cantidad-personas")
+    const mensajeInput = document.getElementById("mensaje-especial")
+    const contadorCaracteres = document.querySelector(".contador-caracteres")
+    const precioCalculado = document.getElementById("precio-calculado")
+
+    // Actualizar precio cuando cambia la cantidad
+    cantidadSelect.addEventListener("change", function () {
+        const multiplicador = this.selectedOptions[0]?.dataset.precio || 1
+        const nuevoPrecio = precioBase * Number.parseFloat(multiplicador)
+        precioCalculado.textContent = formatearPrecio(nuevoPrecio)
+    })
+
+    // Contador de caracteres para mensaje
+    mensajeInput.addEventListener("input", function () {
+        const longitud = this.value.length
+        contadorCaracteres.textContent = `${longitud}/50 caracteres`
+        contadorCaracteres.style.color = longitud > 40 ? "#e74c3c" : "#666"
+    })
+}
+
+function validarYAgregarPersonalizado(codigoProducto) {
+    const cantidadPersonas = document.getElementById("cantidad-personas").value
+    const mensajeEspecial = document.getElementById("mensaje-especial").value.trim()
+    const colorGlaseado = document.getElementById("color-glaseado").value
+
+    // Limpiar errores previos
+    document.querySelectorAll(".error-mensaje").forEach((el) => (el.textContent = ""))
+    document.querySelectorAll(".campo-grupo").forEach((el) => el.classList.remove("error"))
+
+    let hayErrores = false
+
+    // Validar cantidad de personas
+    if (!cantidadPersonas) {
+        document.getElementById("error-cantidad").textContent = "Debes seleccionar la cantidad de personas"
+        document.querySelector("#cantidad-personas").closest(".campo-grupo").classList.add("error")
+        hayErrores = true
+    }
+
+    // Validar color del glaseado
+    if (!colorGlaseado) {
+        document.getElementById("error-color").textContent = "Debes seleccionar un color para el glaseado"
+        document.querySelector("#color-glaseado").closest(".campo-grupo").classList.add("error")
+        hayErrores = true
+    }
+
+    // Validar mensaje especial (opcional pero con límite)
+    if (mensajeEspecial.length > 50) {
+        document.getElementById("error-mensaje").textContent = "El mensaje no puede exceder 50 caracteres"
+        document.querySelector("#mensaje-especial").closest(".campo-grupo").classList.add("error")
+        hayErrores = true
+    }
+
+    if (hayErrores) {
+        return
+    }
+
+    // Si todo está correcto, agregar al carrito
     const producto = productos.find((p) => p.codigo === codigoProducto)
-    if (!producto) return
+    const multiplicador = document.getElementById("cantidad-personas").selectedOptions[0].dataset.precio
+    const precioFinal = producto.precio * Number.parseFloat(multiplicador)
 
     const itemExistente = carrito.find(
-        (item) => item.codigo === codigoProducto && !item.cantidadPersonas && !item.mensajeEspecial && !item.colorGlaseado,
+        (item) =>
+            item.codigo === codigoProducto &&
+            item.cantidadPersonas === cantidadPersonas &&
+            item.mensajeEspecial === mensajeEspecial &&
+            item.colorGlaseado === colorGlaseado,
     )
 
     if (itemExistente) {
         itemExistente.cantidad += 1
     } else {
         carrito.push({
-        ...producto,
-        cantidad: 1,
+            ...producto,
+            cantidad: 1,
+            cantidadPersonas: cantidadPersonas,
+            mensajeEspecial: mensajeEspecial,
+            colorGlaseado: colorGlaseado,
+            precio: precioFinal, // Precio personalizado
         })
     }
 
     localStorage.setItem("carrito", JSON.stringify(carrito))
     actualizarContadorCarrito()
-    mostrarNotificacion(`${producto.nombre} agregado al carrito`)
+
+    let mensaje = `${producto.nombre} personalizada agregada al carrito`
+    if (mensajeEspecial) {
+        mensaje += ` con mensaje: "${mensajeEspecial}"`
     }
 
-    // 9. Actualizar contador del carrito
-    function actualizarContadorCarrito() {
+    mostrarNotificacion(mensaje)
+    cerrarModalPersonalizacion()
+}
+
+// 9. Actualizar contador del carrito
+function actualizarContadorCarrito() {
     const totalItems = carrito.reduce((total, item) => total + item.cantidad, 0)
     const cartCount = document.querySelector(".cart-count")
     if (cartCount) {
         cartCount.textContent = totalItems
         cartCount.style.display = totalItems > 0 ? "flex" : "none"
     }
-    }
+}
 
-    // 10. Mostrar notificación
-    function mostrarNotificacion(mensaje) {
+// 10. Mostrar notificación
+function mostrarNotificacion(mensaje) {
     const notificacion = document.createElement("div")
     notificacion.className = "notificacion"
     notificacion.innerHTML = `
@@ -439,11 +620,16 @@ const productosData = [
     setTimeout(() => {
         notificacion.style.transform = "translateX(100%)"
         setTimeout(() => {
-        if (document.body.contains(notificacion)) {
-            document.body.removeChild(notificacion)
-        }
+            if (document.body.contains(notificacion)) {
+                document.body.removeChild(notificacion)
+            }
         }, 300)
     }, 3000)
+}
+
+// Función para formatear el precio
+function formatearPrecio(precio) {
+    return `$${precio.toLocaleString("es-CL")}`
 }
 
 // Event listeners para manejar los clics y la carga inicial
@@ -451,3 +637,12 @@ document.addEventListener("DOMContentLoaded", cargarProducto)
 
 // Event listener para manejar la navegación con el botón de retroceso
 window.addEventListener("popstate", cargarProducto)
+
+// Función para cerrar el modal de personalización
+function cerrarModalPersonalizacion() {
+    const modal = document.querySelector(".modal-personalizacion-overlay")
+    if (modal) {
+        document.body.removeChild(modal)
+        document.body.style.overflow = "auto"
+    }
+}

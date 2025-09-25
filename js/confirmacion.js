@@ -1,5 +1,6 @@
 // Variables globales
 let datosCompra = null
+const carritoCheckout = [] // Assuming carritoCheckout is defined somewhere in the code
 
 // Inicializar página
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,14 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Cargar datos de la compra desde localStorage
 function cargarDatosCompra() {
-    console.log("[v0] Cargando datos de la compra")
-
     // Obtener número de pedido de la URL
     const urlParams = new URLSearchParams(window.location.search)
     const numeroPedido = urlParams.get("pedido")
 
     if (!numeroPedido) {
-        console.log("[v0] No se encontró número de pedido en URL")
         mostrarError("No se encontró información del pedido")
         return
     }
@@ -25,23 +23,19 @@ function cargarDatosCompra() {
     // Cargar datos del localStorage
     const datosGuardados = localStorage.getItem("ultimaCompra")
     if (!datosGuardados) {
-        console.log("[v0] No se encontraron datos de compra en localStorage")
         mostrarError("No se encontró información del pedido")
         return
     }
 
     try {
         datosCompra = JSON.parse(datosGuardados)
-        console.log("[v0] Datos de compra cargados:", datosCompra)
 
         // Verificar que el número de pedido coincida
         if (datosCompra.numeroPedido !== numeroPedido) {
-            console.log("[v0] Número de pedido no coincide")
             mostrarError("Información del pedido no válida")
             return
         }
     } catch (error) {
-        console.log("[v0] Error al parsear datos de compra:", error)
         mostrarError("Error al cargar información del pedido")
         return
     }
@@ -50,11 +44,8 @@ function cargarDatosCompra() {
 // Mostrar detalles del pedido
 function mostrarDetallesPedido() {
     if (!datosCompra) {
-        console.log("[v0] No hay datos de compra para mostrar")
         return
     }
-
-    console.log("[v0] Mostrando detalles del pedido")
 
     // Actualizar número de pedido
     document.getElementById("numero-pedido").textContent = datosCompra.numeroPedido
@@ -195,8 +186,6 @@ function obtenerTextoPersonalizacion(item) {
 
 // Descargar boleta PDF (simulado)
 function descargarBoleta() {
-    console.log("[v0] Iniciando descarga de boleta")
-
     if (!datosCompra) {
         alert("No se encontró información del pedido")
         return
@@ -211,14 +200,10 @@ function descargarBoleta() {
     alert(
         `Descargando boleta: Boleta_${datosCompra.numeroPedido}.pdf\n\n(Esta es una simulación - en un sistema real se generaría un PDF con los detalles de la compra)`,
     )
-
-    console.log("[v0] Simulación de descarga completada")
 }
 
 // Mostrar error
 function mostrarError(mensaje) {
-    console.log("[v0] Mostrando error:", mensaje)
-
     // Ocultar contenido normal
     document.querySelector(".success-header").style.display = "none"
     document.querySelector(".row").style.display = "none"
@@ -295,8 +280,9 @@ function mostrarError(mensaje) {
 function actualizarContadorCarrito() {
     const cartCount = document.querySelector(".cart-count")
     if (cartCount) {
-        cartCount.textContent = "0"
-        cartCount.style.display = "none"
+        const totalItems = carritoCheckout.reduce((total, item) => total + item.cantidad, 0)
+        cartCount.textContent = totalItems
+        cartCount.style.display = totalItems > 0 ? "flex" : "none"
     }
 }
 

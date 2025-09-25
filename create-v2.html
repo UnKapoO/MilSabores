@@ -54,11 +54,11 @@
                     <nav class="navegacion-principal">
                         <ul>
                             <li><a href="index.html">INICIO</a></li>
-                            <li><a href="catalogo.html" class="active">CATÁLOGO</a></li>
-                            <li><a href="#">TORTAS ESPECIALES</a></li>
-                            <li><a href="#">SIN AZÚCAR</a></li>
-                            <li><a href="#">VEGANO</a></li>
-                            <li><a href="#">BLOG</a></li>
+                            <li><a href="catalogo.html">CATÁLOGO</a></li>
+                            <li><a href="catalogo.html?categoria=especiales">TORTAS ESPECIALES</a></li>
+                            <li><a href="catalogo.html?categoria=sin-azucar">SIN AZÚCAR</a></li>
+                            <li><a href="catalogo.html?categoria=vegana">VEGANO</a></li>
+                            <li><a href="blog.html">BLOG</a></li>
                         </ul>
                     </nav>
 
@@ -88,18 +88,14 @@
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="catalogo.html">Catálogo</a></li>
-                    <li><a href="#">Tortas Especiales</a></li>
-                    <li><a href="#">Sin Azúcar</a></li>
-                    <li><a href="#">Vegano</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="catalogo.html?categoria=especiales">Tortas Especiales</a></li>
+                    <li><a href="catalogo.html?categoria=sin-azucar">Sin Azúcar</a></li>
+                    <li><a href="catalogo.html?categoria=vegana">Vegano</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
-
-
-
 
     <!--Card + formulario para la creacion de productos-->
     <div class="container mt-4">
@@ -238,7 +234,7 @@
 
     // Guardar nueva categoría
     guardarBtn.addEventListener("click", function () {
-        const nuevaCategoria = document.getElementById("nuevaCategoria").value.trim();
+        const nuevaCategoria = document.getElementById("idnuevaCategoria").value.trim();
         if (nuevaCategoria !== "") {
             // Crear nueva opción
             const option = document.createElement("option");
@@ -253,7 +249,7 @@
 
             // Cerrar modal y limpiar input
             modal.hide();
-            document.getElementById("nuevaCategoria").value = "";
+            document.getElementById("idnuevaCategoria").value = "";
         }
     });
 </script>

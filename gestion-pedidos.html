@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin-pedidos.css">
+</head>
+
+<body>
+    <button id="menu-toggle" class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+
+    <main class="admin-content">
+        <header class="admin-header">
+            <h1>Gestión de Pedidos</h1>
+            <p>Revisa y actualiza el estado de los pedidos de tus clientes.</p>
+        </header>
+
+        <section class="kpi-cards">
+            <div class="card panel">
+                <div class="card-icon" style="color: #f39c12;">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                </div>
+                <div class="card-info">
+                    <h4>Pedidos Pendientes</h4>
+                    <span>0</span>
+                </div>
+            </div>
+
+            <div class="card kpi-card panel">
+                <div class="card-icon" style="color: #3498db;">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+                <div class="card-info">
+                    <h4>En Preparación</h4>
+                    <span>0</span>
+                </div>
+            </div>
+
+            <div class="card kpi-card panel">
+                <div class="card-icon" style="color: #2ecc71;">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <div class="card-info">
+                    <h4>Completados (Hoy)</h4>
+                    <span>0</span>
+                </div>
+            </div>
+
+            <div class="card kpi-card panel">
+                <div class="card-icon" style="color: #e74c3c;">
+                    <i class="fa-solid fa-ban"></i>
+                </div>
+                <div class="card-info">
+                    <h4>Cancelados</h4>
+                    <span>0</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="main-column panel">
+
+                <div class="panel-header">
+                    <h2 class="section-title">Listado de Pedidos</h2>
+                    <div class="filter-container">
+                        <label for="status-filter">Filtrar por estado:</label>
+                        <select id="status-filter" class="custom-select">
+                            <option value="todos">Todos los estados</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="en-preparacion">En Preparación</option>
+                            <option value="entregado">Entregado</option>
+                            <option value="cancelado">Cancelado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID Pedido</th>
+                                <th>Fecha</th>
+                                <th>Cliente</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <img src="img/logo.jpg" alt="Logo mil sabores">
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="home-admin.html">Dashboard</a></li>
+            <li class="active"><a href="gestion-pedidos.html">Gestión de Pedidos</a></li>
+            <li><a href="gestion-productos.html">Gestión de Productos</a></li>
+            <li><a href="#clientes">Clientes</a></li>
+            <li><a href="#configuracion">Configuración</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="login.html">Cerrar Sesión</a>
+        </div>
+    </nav>
+
+    <div id="overlay" class="overlay"></div>
+    <script src="js/admin.js"></script>
+    <script src="js/admin-pedidos.js"></script>
+
+</html>
+</body>

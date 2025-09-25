@@ -21,10 +21,17 @@
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, .card-header {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.card-header {
     font-family: var(--fuente-principal);
     font-weight: 700;
 }
+
 body {
     font-family: 'Lato', sans-serif;
     margin: 0;
@@ -92,8 +99,12 @@ body {
 }
 
 .sidebar-footer a {
-    color: var(--color-blanco);
+    color: var(--color-letra-cafe);
     text-decoration: none;
+}
+
+.sidebar-footer a:hover{
+    color: var(--color-fondo-crema);
 }
 
 .menu-toggle {
@@ -171,16 +182,12 @@ body {
 }
 
 
-
 /* --- Estilos para los Componentes del Dashboard --- */
 .kpi-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
 }
-
-
-
 
 /* --- Estilos para Pantallas Grandes (Escritorio / PC) --- */
 @media (min-width: 992px) {
@@ -207,113 +214,64 @@ body {
     }
 }
 
-/* --- Responsive para la Tabla (Stacking Table CORREGIDO Y LIMPIO) --- */
+
+/* --- Estilos para la vista de Móvil --- */
 @media (max-width: 768px) {
 
-
-    /* Ocultamos el encabezado original, no cambia */
-    table thead {
-        display: none;
-    }
-
-    /* Convertimos cada fila en una "tarjeta", no cambia */
-    table tr {
-        display: block;
-        margin-bottom: 20px;
-        border-radius: 12px;
-        padding: 15px;
-        background-color: var(--color-blanco);
-        box-shadow: var(--shadow);
-        border: none;
-    }
-
-    /* Usamos Flexbox para alinear, no cambia */
-    table td {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 5px;
-
-        /* CORRECCIÓN: Usamos solo un borde inferior para separar */
-        border-bottom: 1px solid #f0e9db;
-    }
-
-    /* Quitamos el borde inferior de la ÚLTIMA celda de cada tarjeta */
-    table td:last-child {
-        border-bottom: none;
-    }
-
-    /* El pseudo-elemento para los labels, no cambia */
-    table td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        color: var(--color-letra-cafe);
-        opacity: 0.7;
+    /* Nueva regla para anular el padding y dar más espacio en móviles */
+    .admin-content {
+        padding-left: 15px;
         padding-right: 15px;
     }
 
-    /* Ocultamos la primera columna (la de la imagen), tu regla está perfecta */
-    table td:first-child {
-        display: none;
-    }
-
-    /* Los botones de acción, no cambian */
-    .action-buttons {
-        flex-shrink: 0;
-    }
-
-    /* 1. Le damos al nombre del producto un estilo de título principal */
-    table td[data-label="Producto"] {
+    /* Le damos al nombre del producto un estilo de título principal */
+    .table-container table td[data-label="ID Pedido"] {
         justify-content: flex-start;
-        /* Alineamos todo a la izquierda */
         font-weight: bold;
-        /* Lo ponemos en negrita */
         font-size: 1.1em;
-        /* Lo hacemos un poco más grande */
         color: var(--color-letra-cafe);
     }
 
-    /* 2. Ocultamos el label "Producto:" porque es redundante */
-    table td[data-label="Producto"]::before {
+    .table-container table thead {
         display: none;
     }
 
-    /* 1. Cambiamos el header principal a una columna */
-    .admin-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-        /* Espacio entre el título y los controles */
+    .table-container table tr {
+        display: block;
+        margin-bottom: 20px;
+        background-color: var(--color-blanco);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        padding: 10px 15px;
+        border: 1px solid #f0e9db;
     }
-    .admin-header h1{
-        font-family: var(--fuente-principal);
+
+    .table-container table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #f0e9db;
+        text-align: right;
+    }
+
+    .table-container table td:last-child {
+        border-bottom: none;
+    }
+
+    .table-container table td::before {
+        content: attr(data-label);
         font-weight: bold;
+        color: var(--color-letra-cafe);
+        opacity: 0.8;
+        text-align: left;
+        flex-basis: 40%;
+        flex-shrink: 0;
+        margin-right: 10px;
     }
 
-    /* 2. Hacemos que el contenedor de controles ocupe todo el ancho */
-    .header-right {
-        flex-direction: column;
-        align-items: stretch;
-        /* Estira los hijos para que tengan el mismo ancho */
-        width: 100%;
-        gap: 15px;
-        /* Espacio entre los controles */
-    }
-
-    .header-right .btn.btn-primary {
-        width: 100%;
-    }
-
-    /* 3. Forzamos que los inputs y botones ocupen el 100% del ancho */
-    #search-input,
-    .custom-select,
-    .btn.btn-primary {
-        width: 100%;
-    }
-
-    /* 4. Reseteamos la expansión del input de búsqueda en foco */
-    #search-input:focus {
-        width: 100%;
+    .table-container table td[data-label="ID Pedido"]::before {
+        content: "";
     }
 }
 
@@ -415,26 +373,89 @@ body {
     padding: 5px;
 }
 
-
-
 /* --- Estilo para el botón Guardar de ancho completo --- */
 .save-button-container .btn {
-    width: 100%;      
-    padding-top: 15px;   
+    width: 100%;
+    padding-top: 15px;
     padding-bottom: 15px;
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
 }
 
-.save-button-container .btn:active{
-    background-color:var(--color-letra-cafe) ;
+.save-button-container .btn:active {
+    background-color: var(--color-letra-cafe);
 }
-
-
-
 
 /* --- Estilo para Campos Obligatorios --- */
 .form-label.required::after {
-    content: " *"; /* El espacio antes del * es para que no quede pegado al texto */
-    color: #e74c3c; /* Un color rojo claro y visible */
+    content: " *";
+    /* El espacio antes del * es para que no quede pegado al texto */
+    color: #e74c3c;
+    /* Un color rojo claro y visible */
     font-weight: bold;
+}
+
+/* --- Estilos para la vista de Móvil --- */
+@media (max-width: 768px) {
+
+    /* 1. Ajuste del padding para el contenedor principal */
+    .admin-content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* 2. Oculta el encabezado de la tabla */
+    .table-container table thead {
+        display: none;
+    }
+
+    /* 3. Da a cada fila (tarjeta) más espacio y un padding ajustado */
+    .table-container table tr {
+        display: block;
+        margin-bottom: 20px;
+        background-color: var(--color-blanco);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        padding: 10px;
+        /* Un padding uniforme para más espacio horizontal */
+        border: 1px solid #f0e9db;
+    }
+
+    /* 4. Estilos para cada celda como una fila de flexbox */
+    .table-container table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #f0e9db;
+        text-align: right;
+    }
+
+    .table-container table td:last-child {
+        border-bottom: none;
+    }
+
+    /* 5. Estilo de la etiqueta (ID Pedido, Cliente, etc.) */
+    .table-container table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: var(--color-letra-cafe);
+        opacity: 0.8;
+        text-align: left;
+        flex-basis: 45%;
+        flex-shrink: 0;
+        margin-right: 10px;
+    }
+
+    /* 6. Regla especial para la primera celda (ID Pedido) */
+    .table-container table td[data-label="ID Pedido"] {
+        justify-content: flex-start;
+        font-weight: bold;
+        font-size: 1.1em;
+        color: var(--color-letra-cafe);
+    }
+
+    .table-container table td[data-label="ID Pedido"]::before {
+        content: "";
+        /* No mostrar la etiqueta "ID Pedido" */
+    }
 }

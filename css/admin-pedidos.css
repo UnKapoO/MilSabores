@@ -1,0 +1,174 @@
+/* Archivo: css/pedidos.css */
+
+/* --- Estilos para la cabecera del panel de la tabla --- */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Para que se ajuste en móviles */
+    padding: 20px 25px;
+    border-bottom: 1px solid #f0e9db;
+}
+
+.section-title {
+    margin: 0;
+}
+
+
+/* --- Estilos para la cabecera del panel --- */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px 25px;
+    border-bottom: 1px solid #f0e9db;
+}
+
+.section-title {
+    margin: 0;
+}
+
+/* --- Estilos para el Filtro Desplegable --- */
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-container label {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: var(--color-letra-gris);
+}
+
+.custom-select {
+    padding: 8px 12px;
+    border: 1px solid #e0d9c9;
+    border-radius: 8px;
+    background-color: var(--color-blanco);
+    color: var(--color-letra-cafe);
+    font-family: var(--fuente-principal);
+    font-weight: bold;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 16px 12px;
+    appearance: none;
+}
+
+.custom-select:focus {
+    outline: 2px solid var(--color-acento-rosa);
+    border-color: transparent;
+}
+
+/* --- Estilos para la Tabla de Pedidos --- */
+.table-container { 
+    overflow-x: auto; 
+    padding: 0 25px 25px 25px;
+}
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 15px; text-align: left; border-bottom: 1px solid #f0e9db; }
+thead th { background-color: transparent; font-weight: bold; color: var(--color-letra-gris); }
+tbody tr:hover { background-color: #fffaf2; }
+
+/* --- Indicadores de Estado --- */
+.status { padding: 5px 12px; border-radius: 15px; font-size: 0.8em; font-weight: bold; color: var(--color-blanco); }
+.status.pendiente { background-color: #f39c12; }
+.status.en-preparacion { background-color: #3498db; }
+.status.entregado { background-color: #2ecc71; }
+.status.cancelado { background-color: #e74c3c; }
+
+/* --- Botones de Acción en la Tabla --- */
+.action-btn {
+    background: none;
+    border: none;
+    color: var(--color-letra-gris);
+    font-size: 1.1em;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: color 0.2s;
+}
+.action-btn:hover {
+    color: var(--color-letra-cafe);
+}
+
+
+
+.card-icon {
+    font-size: 2.5em;
+    color: var(--color-acento-rosa); /* ¡Este color se aplicará a todos por igual! */
+}
+
+/* Estilos especiales */
+
+@media (max-width: 768px) {
+    /* Le damos al nombre del producto un estilo de título principal */
+    .table-container table td[data-label="Producto"] {
+        justify-content: flex-start;
+        font-weight: bold;
+        font-size: 1.1em;
+        color: var(--color-letra-cafe);
+    }
+
+    /* Ocultamos el label "Producto:" porque es redundante */
+    .table-container table td[data-label="Producto"]::before {
+        display: none;
+    }
+}
+
+
+
+/* Estilos para el Encabezado de la Tabla */
+.panel-header {
+    display: flex;
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    align-items: center;
+    margin-bottom: 20px; /* Espacio entre el encabezado y la tabla */
+}
+
+/* --- Estilos para el Filtro --- */
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-container label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--color-letra-cafe);
+}
+
+.custom-select {
+    padding: 10px;
+    border: 1px solid #e0d9c9;
+    border-radius: 8px;
+    background-color: var(--color-blanco);
+    font-family: var(--fuente-principal);
+    font-weight: bold;
+    color: var(--color-letra-cafe);
+    cursor: pointer;
+    /* La clave para que no se corte el texto */
+    min-width: 150px; 
+}
+
+/* --- Estilos Responsivos para que se vea bien en móviles --- */
+@media (max-width: 768px) {
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .filter-container {
+        width: 100%;
+    }
+
+    .custom-select {
+        /* Fuerza a que el select ocupe todo el ancho en móviles */
+        width: 100%; 
+        min-width: unset; /* Reinicia la propiedad para que no interfiera */
+    }
+}

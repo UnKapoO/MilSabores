@@ -1,0 +1,440 @@
+/* --- Variables de Color y Fuentes --- */
+:root {
+    --color-fondo-crema: #FFF5E1;
+    --color-hover-rosa: #de97a3;
+    --color-acento-rosa: #FFC0CB;
+    --color-acento-cafe: #8B4513;
+    --color-letra-cafe: #5D4037;
+    --color-letra-gris: #B0BEC5;
+    --color-blanco: #ffffff;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --fuente-principal: 'Lato', sans-serif;
+    --fuente-secundaria: 'Pacifico', cursive;
+    --breakpoint-lg: 992px;
+    --breakpoint-sm: 576px;
+}
+
+/* --- Estilos Generales y Reseteo Básico --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, .card-header {
+    font-family: var(--fuente-principal);
+    font-weight: 700;
+}
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    background-color: var(--color-fondo-crema);
+    color: var(--color-letra-cafe);
+}
+
+/* --- Estilos del Sidebar y Overlay (Móvil Primero) --- */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -260px;
+    background-color: var(--color-acento-rosa);
+    color: var(--color-blanco);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease-in-out;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--color-letra-cafe);
+}
+
+.sidebar-header img {
+    max-width: 80px;
+    border-radius: 50%;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.sidebar-menu li a {
+    display: block;
+    color: var(--color-letra-cafe);
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li.active a {
+    color: var(--color-fondo-crema);
+    background-color: var(--color-letra-cafe);
+}
+
+
+.sidebar-footer {
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid var(--color-letra-cafe);
+}
+
+.sidebar-footer a {
+    color: var(--color-blanco);
+    text-decoration: none;
+}
+
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+    background-color: var(--color-acento-cafe);
+    color: var(--color-blanco);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(93, 64, 55, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.sidebar.is-visible {
+    right: 0;
+}
+
+.overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Contenedor Principal y Header --- */
+.admin-content {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 25px 30px;
+    padding-top: auto;
+    transition: filter 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.admin-header h1 {
+    font-size: 2.7rem;
+}
+
+.admin-header p {
+    margin: 5px 0 0 0;
+    margin-bottom: 5px;
+    color: var(--color-letra-cafe);
+    opacity: 0.8;
+
+}
+
+.header-left {
+    margin-bottom: 20px;
+}
+
+/* --- Estilo de Contenedor Unificado (Panel) --- */
+.panel {
+    background-color: var(--color-blanco);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid #f0e9db;
+}
+
+
+
+/* --- Estilos para los Componentes del Dashboard --- */
+.kpi-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+
+
+
+/* --- Estilos para Pantallas Grandes (Escritorio / PC) --- */
+@media (min-width: 992px) {
+    /* O var(--breakpoint-lg) */
+
+    /* 1. Hacemos el sidebar permanentemente visible */
+    .sidebar {
+        right: 0;
+        /* Anula el 'right: -260px' y lo pone en su sitio */
+        box-shadow: none;
+        /* Le quitamos la sombra de la vista móvil */
+    }
+
+    /* 2. Hacemos espacio para el sidebar en el contenido principal */
+    .admin-content {
+        width: calc(100% - 250px);
+        margin-right: 250px;
+    }
+
+    /* 3. Ocultamos el botón de hamburguesa, que no se necesita en PC */
+    .menu-toggle,
+    .overlay {
+        display: none;
+    }
+}
+
+/* --- Responsive para la Tabla (Stacking Table CORREGIDO Y LIMPIO) --- */
+@media (max-width: 768px) {
+
+
+    /* Ocultamos el encabezado original, no cambia */
+    table thead {
+        display: none;
+    }
+
+    /* Convertimos cada fila en una "tarjeta", no cambia */
+    table tr {
+        display: block;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        padding: 15px;
+        background-color: var(--color-blanco);
+        box-shadow: var(--shadow);
+        border: none;
+    }
+
+    /* Usamos Flexbox para alinear, no cambia */
+    table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 5px;
+
+        /* CORRECCIÓN: Usamos solo un borde inferior para separar */
+        border-bottom: 1px solid #f0e9db;
+    }
+
+    /* Quitamos el borde inferior de la ÚLTIMA celda de cada tarjeta */
+    table td:last-child {
+        border-bottom: none;
+    }
+
+    /* El pseudo-elemento para los labels, no cambia */
+    table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: var(--color-letra-cafe);
+        opacity: 0.7;
+        padding-right: 15px;
+    }
+
+    /* Ocultamos la primera columna (la de la imagen), tu regla está perfecta */
+    table td:first-child {
+        display: none;
+    }
+
+    /* Los botones de acción, no cambian */
+    .action-buttons {
+        flex-shrink: 0;
+    }
+
+    /* 1. Le damos al nombre del producto un estilo de título principal */
+    table td[data-label="Producto"] {
+        justify-content: flex-start;
+        /* Alineamos todo a la izquierda */
+        font-weight: bold;
+        /* Lo ponemos en negrita */
+        font-size: 1.1em;
+        /* Lo hacemos un poco más grande */
+        color: var(--color-letra-cafe);
+    }
+
+    /* 2. Ocultamos el label "Producto:" porque es redundante */
+    table td[data-label="Producto"]::before {
+        display: none;
+    }
+
+    /* 1. Cambiamos el header principal a una columna */
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        /* Espacio entre el título y los controles */
+    }
+    .admin-header h1{
+        font-family: var(--fuente-principal);
+        font-weight: bold;
+    }
+
+    /* 2. Hacemos que el contenedor de controles ocupe todo el ancho */
+    .header-right {
+        flex-direction: column;
+        align-items: stretch;
+        /* Estira los hijos para que tengan el mismo ancho */
+        width: 100%;
+        gap: 15px;
+        /* Espacio entre los controles */
+    }
+
+    .header-right .btn.btn-primary {
+        width: 100%;
+    }
+
+    /* 3. Forzamos que los inputs y botones ocupen el 100% del ancho */
+    #search-input,
+    .custom-select,
+    .btn.btn-primary {
+        width: 100%;
+    }
+
+    /* 4. Reseteamos la expansión del input de búsqueda en foco */
+    #search-input:focus {
+        width: 100%;
+    }
+}
+
+
+/*BOTONES*/
+/* --- Estilos Mejorados para Botones --- */
+
+.btn {
+    /* Estructura base del botón */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-decoration: none;
+    /* Para que funcione bien en las etiquetas <label> */
+
+    /* Transiciones suaves para todos los cambios */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/*BOTONES*/
+
+.btn-primary {
+    /* Gradiente sutil */
+    color: var(--color-blanco, #fff);
+    background-color: var(--color-letra-cafe);
+}
+
+/* Efecto al pasar el mouse (hover) */
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background-color: var(--color-acento-cafe);
+}
+
+/* Efecto al hacer clic (active) */
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn i {
+    margin-right: 8px;
+    transition: transform 0.2s ease;
+}
+
+.btn-primary:hover i {
+    transform: rotate(-10deg);
+}
+
+/* Archivo: css/admin.css */
+
+/* --- Estilo para el nuevo botón secundario --- */
+.btn.btn-secondary {
+    background-color: dimgray;
+    border: 2px solid var(--color-blanco);
+    color: var(--color-blanco);
+    padding: 8px 16px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.btn.btn-secondary:hover {
+    background-color: var(--color-acento-rosa);
+    color: var(--color-blanco);
+    transform: translateY(-2px);
+}
+
+/* --- Estilos para las filas dinámicas de tamaño/precio --- */
+.size-price-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.size-price-row .form-label {
+    margin-bottom: 0;
+    /* Quitamos el margen inferior de las etiquetas en estas filas */
+}
+
+/* Hacemos que los inputs de porciones y precio crezcan para ocupar el espacio */
+.size-price-row .flex-grow-1 {
+    flex-grow: 1;
+}
+
+/* Botón para eliminar la fila */
+.remove-size-btn {
+    background: none;
+    border: none;
+    color: var(--color-delete-red, #e74c3c);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+
+/* --- Estilo para el botón Guardar de ancho completo --- */
+.save-button-container .btn {
+    width: 100%;      
+    padding-top: 15px;   
+    padding-bottom: 15px;
+    font-size: 1.1rem; 
+}
+
+.save-button-container .btn:active{
+    background-color:var(--color-letra-cafe) ;
+}
+
+
+
+
+/* --- Estilo para Campos Obligatorios --- */
+.form-label.required::after {
+    content: " *"; /* El espacio antes del * es para que no quede pegado al texto */
+    color: #e74c3c; /* Un color rojo claro y visible */
+    font-weight: bold;
+}

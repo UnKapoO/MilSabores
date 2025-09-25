@@ -1,0 +1,325 @@
+/* --- ARCHIVO: css/admin-global.css --- */
+
+/* --- Estilos de Contenedor Unificado (Panel) --- */
+.panel {
+    background-color: var(--color-blanco, #fff);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow, 0 4px 8px rgba(0, 0, 0, 0.1));
+    border: 1px solid #f0e9db;
+}
+
+/* --- Títulos de Sección --- */
+.section-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.2rem;
+}
+
+/* --- Estilos de Tabla Compartidos --- */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead th {
+    text-align: left;
+    padding: 15px;
+    background-color: #fdfaf5;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--color-letra-cafe, #5D4037);
+}
+
+table tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #f0e9db;
+    vertical-align: middle;
+}
+
+table tbody tr:hover {
+    background-color: #fdfaf5;
+}
+
+/* --- Estilos de Botones de Acción --- */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: opacity 0.2s;
+}
+
+.action-btn:hover {
+    opacity: 0.8;
+}
+
+.action-btn.btn-view {
+    background-color: #3498db;
+}
+
+.action-btn.btn-edit {
+    background-color: #f39c12;
+}
+
+.action-btn.btn-delete {
+    background-color: #e74c3c;
+}
+
+
+.product-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.product-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.product-name {
+    font-weight: bold;
+}
+
+/* --- Responsive para la Tabla (Stacking Table) --- */
+@media (max-width: 768px) {
+    table thead {
+        display: none;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 20px;
+        border: 1px solid #f0e9db;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 5px;
+        border-bottom: 1px dotted var(--color-blanco);
+    }
+
+    table td:last-child {
+        border-bottom: none;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: var(--color-letra-cafe, #5D4037);
+    }
+}
+
+/* --- Estilos para el Filtro --- */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* Espacio entre el filtro y el botón */
+}
+
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-container label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--color-letra-cafe);
+}
+
+.custom-select {
+    padding: 10px;
+    border: 1px solid #e0d9c9;
+    border-radius: 8px;
+    background-color: var(--color-blanco);
+    font-family: var(--fuente-principal);
+    font-weight: bold;
+    color: var(--color-letra-cafe);
+    cursor: pointer;
+}
+
+/* --- Estilos para el Cuadro de Búsqueda --- */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    color: var(--color-letra-gris);
+}
+
+#search-input {
+    padding: 10px 15px 10px 40px;
+    /* Padding izquierdo para dar espacio al ícono */
+    border: 1px solid #e0d9c9;
+    border-radius: 8px;
+    font-family: var(--fuente-principal);
+    color: var(--color-letra-cafe);
+    width: 250px;
+    /* Ancho inicial */
+    transition: width 0.3s ease;
+}
+
+#search-input:focus {
+    outline: 2px solid var(--color-acento-rosa);
+    border-color: transparent;
+    width: 300px;
+    /* Se expande un poco al hacer foco */
+}
+
+/* --- Estilos para el Modal de Detalles --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(93, 64, 55, 0.6);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* CORRECCIÓN CLAVE: Transiciones y estado inicial */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+/* ESTA ES LA REGLA MÁS IMPORTANTE: Oculta el modal por defecto */
+.modal-overlay.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    /* La transición ahora se retrasa para que no se vea el contenido al desaparecer */
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.modal-content {
+    background-color: var(--color-blanco);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+    /* CORRECCIÓN: Mejora de la animación de entrada/salida */
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+/* Al estar oculto, el contenido se hace un poco más pequeño */
+.modal-overlay.is-hidden .modal-content {
+    transform: scale(0.95);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--color-letra-gris);
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* --- (El resto de los estilos internos del modal no necesitan cambios) --- */
+.modal-body {
+    display: flex;
+    gap: 30px;
+}
+
+.modal-product-image {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.modal-product-name {
+    margin-top: 0;
+}
+
+
+/* --- Responsive para el Modal --- */
+@media (max-width: 768px) {
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .modal-product-image {
+        width: 100%;
+        height: 200px;
+    }
+}
+
+/* --- Responsive para el Encabezado en Móviles (AJUSTADO) --- */
+@media (max-width: 768px) {
+
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .header-right {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 15px;
+    }
+
+    /* La barra de búsqueda sigue ocupando el 100% del ancho */
+    #search-input {
+        width: 100%;
+    }
+
+    /* /// NUEVAS REGLAS para la fila del filtro y el botón /// */
+    .controls-row {
+        display: flex; /* ¡La clave está aquí! */
+        gap: 15px;     /* Espacio entre el filtro y el botón */
+        align-items: center;
+    }
+    
+    /* Hacemos que el filtro ocupe el espacio disponible */
+    .controls-row .filter-container {
+        flex-grow: 1; 
+    }
+    
+    .custom-select {
+        width: 100%;
+    }
+
+    /* El botón ya no necesita ocupar el 100% del ancho */
+    .btn.btn-primary {
+        width: auto;
+        flex-shrink: 0; /* Evita que el botón se encoja */
+    }
+}

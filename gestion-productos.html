@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos - Admin</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/productos.css">
+
+</head>
+
+<body>
+
+    <button id="menu-toggle" class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+
+    <main class="admin-content">
+
+        <header class="admin-header">
+            <h1>Gestión de Productos</h1>
+            <div class="header-left">
+
+                <p>Añade, modifica o elimina productos de tu tienda.</p>
+            </div>
+
+            <div class="header-right">
+
+                <div class="search-container">
+                    <i class="fa-solid fa-search search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Buscar por nombre...">
+                </div>
+
+                <div class="filter-container">
+                    <label for="category-filter">Filtrar por:</label>
+                    <select id="category-filter" class="custom-select">
+                    </select>
+                </div>
+
+
+                <button class="btn btn-primary" onclick="location.href='create-producto.html'">
+                    <i class="fa-solid fa-plus"></i> Añadir Producto
+                </button>
+
+            </div>
+        </header>
+
+        <section class="main-column panel">
+            <h2 class="section-title">Listado de Productos</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="product-list-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="sidebar">
+        <div class="sidebar-header logo-principal">
+            <img src="img/logo.jpg" alt="Logo mil sabores">
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="home-admin.html">Dashboard</a></li>
+            <li><a href="#pedidos">Pedidos</a></li>
+            <li class="active"><a href="#productos">Gestión de Productos</a></li>
+            <li><a href="#clientes">Clientes</a></li>
+            <li><a href="#configuracion">Configuración</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="/logout">🚪 Cerrar Sesión</a>
+        </div>
+    </nav>
+
+    <div id="overlay" class="overlay"></div>
+
+    <!--Modal-->
+    <div id="product-modal" class="modal-overlay is-hidden">
+        <div class="modal-content">
+            <button id="close-modal" class="close-modal">&times;</button>
+
+            <div class="modal-body">
+                <img id="modal-product-image" src="" alt="Imagen del producto" class="modal-product-image">
+                <div class="modal-product-details">
+                    <h2 id="modal-product-name">Nombre del Producto</h2>
+                    <p id="modal-product-category" class="modal-product-category">Categoría</p>
+                    <p id="modal-product-description">Aquí irá la descripción completa y detallada del producto.</p>
+                    <div class="modal-footer">
+                        <span id="modal-product-price" class="modal-product-price">$0</span>
+                        <span id="modal-product-code" class="modal-product-code">Código: #000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/admin.js"></script>
+    <script src="js/productos.js"></script>
+
+</body>
+
+</html>

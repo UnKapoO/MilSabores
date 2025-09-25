@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <!-- Font Awesome CDN -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/home-admin.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Pacifico&display=swap"
+        rel="stylesheet">
+
+
+</head>
+
+<body>
+    <button id="menu-toggle" class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <main class="admin-content">
+        <header class="admin-header">
+            <h1>¡Bienvenido de nuevo, Wacoldo!</h1>
+            <p>Aquí encontrarás el estado actual de ventas, productos y pedidos.</p>
+        </header>
+
+        <section class="kpi-cards">
+            <div class="card panel">
+                <div class="card-icon">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                </div>
+                <div class="card-info">
+                    <h4>Ventas del Día</h4>
+                    <span>$125.500</span>
+                </div>
+            </div>
+
+            <div class="card panel">
+                <div class="card-icon">
+                    <i class="fa-solid fa-cart-plus"></i>
+                </div>
+                <div class="card-info">
+                    <h4>Pedidos Nuevos</h4>
+                    <span>7</span>
+                </div>
+            </div>
+
+            <div class="card panel">
+                <div class="card-icon">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <div class="card-info">
+                    <h4>Visitas al Sitio</h4>
+                    <span>132</span>
+                </div>
+            </div>
+
+            <div class="card panel">
+                <div class="card-icon">
+                    <i class="fa-solid fa-cake-candles"></i>
+                </div>
+                <div class="card-info">
+                    <h4>Productos en Venta</h4>
+                    <span>25</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-main-content">
+
+            <div class="main-column panel">
+
+                <div class="monthly-income">
+                    <h4>Ingresos Acumulados del Mes</h4>
+                    <span class="income-amount">$1.450.000</span>
+                    <div class="income-bar">
+                        <div class="income-progress" style="width: 75%;"></div>
+                    </div>
+                    <small>Meta del mes: $2.000.000</small>
+                </div>
+
+                <h2 class="section-title">Últimos Pedidos</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID Pedido</th>
+                                <th>Cliente</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="ID Pedido">#1024</td>
+                                <td data-label="Cliente">Carlos Vera</td>
+                                <td data-label="Total">$25.000</td>
+                                <td data-label="Estado"><span class="status pendiente">Pendiente</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label="ID Pedido">#1023</td>
+                                <td data-label="Cliente">María González</td>
+                                <td data-label="Total">$18.500</td>
+                                <td data-label="Estado"><span class="status en-preparacion">En preparación</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label="ID Pedido">#1022</td>
+                                <td data-label="Cliente">Javier Muñoz</td>
+                                <td data-label="Total">$32.000</td>
+                                <td data-label="Estado"><span class="status entregado">Entregado</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <aside class="side-column panel">
+                <h2 class="section-title">Productos Más Vendidos</h2>
+                <ul id="top-products-list" class="top-products-list"></ul>
+            </aside>
+
+        </section>
+
+    </main>
+
+    <nav class="sidebar">
+        <div class="sidebar-header logo-principal">
+            <img src="img/logo.jpg" alt="Logo mil sabores">
+        </div>
+        <ul class="sidebar-menu">
+            <li class="active"><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#pedidos">Pedidos</a></li>
+            <li><a href="gestion-productos.html">Gestión de Productos</a></li>
+            <li><a href="#clientes">Clientes</a></li>
+            <li><a href="#configuracion">Configuración</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="/logout">🚪 Cerrar Sesión</a>
+        </div>
+    </nav>
+    
+
+    <div id="overlay" class="overlay"></div>
+    <script src="js/home-admin.js"></script>
+
+</body>
+
+</html>

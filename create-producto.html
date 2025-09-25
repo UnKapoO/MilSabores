@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo producto</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/create-producto.css">
+</head>
+
+<body>
+    <button id="menu-toggle" class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+
+    <div class="container-fluid mt-4">
+        <main class="admin-content">
+            <header class="admin-header">
+                <h1>Nuevo Producto</h1>
+                <p>Rellena la información para añadir un item al catálogo.</p>
+            </header>
+
+            <form>
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header">Información Principal del Producto</div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="nombre-producto" class="form-label required">Nombre del Producto</label>
+                                    <input type="text" class="form-control" id="nombre-producto"
+                                        placeholder="Ej: Torta de Chocolate Intenso" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descrip-producto" class="form-label required">Descripción</label>
+                                    <textarea class="form-control" id="descrip-producto" rows="4"
+                                        placeholder="Describe el producto, sus ingredientes principales, etc."></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="histo-producto" class="form-label">Historia</label>
+                                    <textarea class="form-control" id="histo-producto" rows="2" placeholder="Historia del producto"></textarea>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header">Organización</div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="id-producto" class="form-label required">ID / SKU</label>
+                                    <input type="text" id="id-producto" class="form-control" placeholder="Ej: TC001"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="categoria" class="form-label required">Categoría</label>
+                                    <select class="form-select" id="categoria" required>
+                                        <option selected disabled value="">Seleccione una categoría</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="estado" class="form-label required">Estado</label>
+                                    <select class="form-select" id="estado" required>
+                                        <option selected disabled value="">Seleccione Estado</option>
+                                        <option value="activo">Activo</option>
+                                        <option value="inactivo">Oculto</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mt-1">
+                    <div class="col-lg-8">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header">Precio y Stock</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="precio" class="form-label required">Precio Base</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" id="precio" class="form-control" placeholder="10000"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="descuento" class="form-label">Descuento</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" id="descuento" class="form-control" placeholder="1000">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="stock" class="form-label required">Stock</label>
+                                        <input type="number" id="stock" class="form-control" placeholder="100" required>
+                                    </div>
+                                </div>
+
+                                <div id="opciones-torta" class="d-none">
+                                    <hr>
+                                    <h5>Tamaños y Precios para Tortas</h5>
+
+                                    <div id="torta-sizes-container">
+                                    </div>
+
+                                    <button type="button" id="add-size-btn" class="btn btn-secondary mt-2">
+                                        <i class="fa-solid fa-plus"></i> Añadir Tamaño
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header">Imagen del Producto</div>
+                            <div class="card-body text-center">
+                                <div class="image-preview-container">
+                                    <img src="https://via.placeholder.com/300x200.png?text=Imagen"
+                                        alt="Previsualización" id="image-preview" class="image-preview">
+                                </div>
+                                <label for="img-producto" class="btn btn-secondary mt-3">Seleccionar Imagen</label>
+                                <input class="form-control d-none" id="img-producto" type="file" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="save-button-container mt-4">
+                    <button type="submit" class="btn btn-primary  px-5 py-2">Guardar Producto</button>
+                </div>
+            </form>
+    </div>
+
+    </main>
+
+    <div class="modal fade" id="modalCategoria" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nueva Categoría</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="idnuevaCategoria" class="form-label">Nombre de la Nueva Categoría</label>
+                    <input type="text" id="idnuevaCategoria" class="form-control" placeholder="Ej: Vegana">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="guardarCategoria">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="sidebar">
+        <div class="sidebar-header logo-principal">
+            <img src="img/logo.jpg" alt="Logo mil sabores">
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="home-admin.html">Dashboard</a></li>
+            <li><a href="#pedidos">Pedidos</a></li>
+            <li class="active"><a href="gestion-productos.html">Gestión de Productos</a></li>
+            <li><a href="#clientes">Clientes</a></li>
+            <li><a href="#configuracion">Configuración</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="/logout">🚪 Cerrar Sesión</a>
+        </div>
+    </nav>
+
+    <div id="overlay" class="overlay"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/create-producto.js"></script>
+</body>
+
+</html>

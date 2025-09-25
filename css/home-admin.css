@@ -1,0 +1,299 @@
+
+
+/* --- Tarjetas de Resumen (KPI Cards) --- */
+.kpi-cards {
+    display: grid;
+    /* Crea columnas flexibles que se adaptan al espacio.
+       Cada columna tendrá un mínimo de 220px. */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    /* Espacio entre las tarjetas */
+}
+
+.card {
+    display: flex;
+    /* Estilo específico para las tarjetas */
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    /* Efecto de "levantar" al pasar el mouse */
+}
+
+.card-icon {
+    font-size: 2.5em;
+    /* Tamaño del ícono */
+    color: var(--color-acento-rosa);
+}
+
+.card-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: var(--color-letra-cafe);
+    opacity: 0.9;
+}
+
+.card-info span {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--color-letra-cafe);
+}
+
+/* --- Contenido Principal (2 columnas) --- */
+.dashboard-main-content {
+    display: grid;
+    /* Por defecto, una sola columna para móviles */
+    grid-template-columns: 1fr;
+    gap: 30px;
+    /* Espacio entre los elementos */
+}
+
+.main-column,
+.side-column {
+    background-color: var(--color-blanco);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.section-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.2rem;
+}
+
+/* --- Ingresos Acumulados del Mes --- */
+.monthly-income {
+    margin-bottom: 40px;
+}
+
+.monthly-income h4 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.income-amount {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: var(--color-letra-cafe);
+}
+
+.income-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.income-progress {
+    height: 100%;
+    background-color: var(--color-acento-rosa);
+    border-radius: 5px;
+}
+
+.monthly-income small {
+    opacity: 0.7;
+}
+
+/* --- Tabla de Pedidos --- */
+.table-container {
+    overflow-x: auto;
+    /* Permite scroll horizontal en móviles */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+thead th {
+    background-color: #fdfaf5;
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: var(--color-acento-rosa);
+}
+
+tr{
+    background-color:var(--color-blanco);
+    border-bottom: 2px solid #ddd;
+}
+
+.status {
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--color-blanco);
+}
+
+.status.pendiente {
+    background-color: #f39c12;
+}
+
+.status.en-preparacion {
+    background-color: #3498db;
+}
+
+.status.entregado {
+    background-color: #2ecc71;
+}
+
+/* --- Lista de Productos Más Vendidos --- */
+.top-products-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.top-products-list li {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.top-products-list li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.product-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+    /* Asegura que la imagen no se deforme */
+}
+
+.product-name {
+    display: block;
+    font-weight: bold;
+}
+
+.product-sales {
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
+/* --- Media Query para Escritorio --- */
+/* Cuando la pantalla sea más ancha que 992px, crea las 2 columnas */
+@media (min-width: var(--breakpoint-lg)) {
+    .dashboard-main-content {
+        /* 2 columnas: la primera ocupa el doble que la segunda */
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+
+
+/* --- Rediseño de la Tabla para Pantallas Muy Pequeñas --- */
+@media (max-width: 576px) {
+
+    /* 1. Ocultamos los encabezados originales de la tabla */
+    table thead {
+        display: none;
+    }
+
+    /* 2. Convertimos cada fila en una "tarjeta" */
+    table tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #f0e9db;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    /* 3. Hacemos que cada celda ocupe su propia línea */
+    table td {
+        display: block;
+        text-align: right;
+        /* Alineamos el valor a la derecha */
+        padding: 8px 5px;
+        border-bottom: 1px dotted #e0d9c9;
+    }
+
+    table td:last-child {
+        border-bottom: none;
+        /* Quitamos la línea de la última celda */
+    }
+
+    /* 4. La magia: creamos un "falso" encabezado a la izquierda usando el data-label */
+    table td::before {
+        content: attr(data-label);
+        /* Toma el texto del atributo data-label */
+        float: left;
+        /* Lo posiciona a la izquierda */
+        font-weight: bold;
+        color: var(--color-letra-cafe);
+    }
+
+    /* Hacemos un poco más pequeños los textos grandes para que no dominen la pantalla */
+    .income-amount {
+        font-size: 1.8em;
+    }
+
+    .card-info span {
+        font-size: 1.5em;
+    }
+
+    /* Aseguramos que el contenedor principal tenga un poco menos de padding en los lados */
+    .admin-content {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+
+
+
+/*/* --- Estilos para pantallas grandes (Escritorio / PC) --- */
+/* Se aplica a pantallas de 992px de ancho o más */
+@media (min-width: 992px) {
+
+    /* 1. Hacemos el sidebar permanentemente visible */
+    .sidebar {
+        right: 0;
+        /* Lo posicionamos visible */
+        box-shadow: none;
+        /* Le quitamos la sombra que era para la vista móvil */
+    }
+
+    /* 2. Hacemos espacio para el sidebar */
+    .admin-content {
+        width: calc(100% - 250px);
+        /* El contenido ocupa el resto del espacio */
+        margin-right: 250px;
+        /* Margen a la derecha para no superponerse con el sidebar */
+        padding-top: 30px;
+        /* Reajustamos el padding */
+    }
+
+    /* 3. Ocultamos el botón de hamburguesa y el overlay, ya no son necesarios */
+    .menu-toggle,
+    .overlay {
+        display: none;
+    }
+}

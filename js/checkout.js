@@ -385,17 +385,12 @@ function validarFormularioCompleto() {
 
 // Procesar pago
 function procesarPago() {
-    console.log("[v0] Iniciando proceso de pago")
-
     const validacion = validarFormularioCompleto()
 
     if (!validacion.esValido) {
-        console.log("[v0] Validación fallida:", validacion.errores)
         alert("Por favor corrige los errores en el formulario:\n\n" + validacion.errores.join("\n"))
         return
     }
-
-    console.log("[v0] Validación exitosa, mostrando modal de procesamiento")
 
     // Mostrar modal de procesamiento
     const modalProcesando = document.getElementById("modal-procesando")
@@ -408,8 +403,6 @@ function procesarPago() {
 
     // Simular procesamiento de pago (3 segundos)
     setTimeout(() => {
-        console.log("[v0] Simulación de pago completada")
-
         // Generar número de pedido
         const numeroPedido = generarNumeroPedido()
 
@@ -434,8 +427,6 @@ function procesarPago() {
 
         // Limpiar carrito
         localStorage.removeItem("carrito")
-
-        console.log("[v0] Datos guardados, redirigiendo a confirmación")
 
         // Redirigir a página de confirmación
         window.location.href = `confirmacion.html?pedido=${numeroPedido}`

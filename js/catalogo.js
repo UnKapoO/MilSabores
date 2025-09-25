@@ -11,6 +11,9 @@ const productosData = [
       "Deliciosa torta de chocolate con capas de ganache y un toque de avellanas. Personalizable con mensajes especiales.",
     imagen: "img/torta-cuadrada-chocolate-ganache.jpg",
     icono: "fa-solid fa-birthday-cake",
+    cantidadPersonas: "8-10 personas",
+    ingredientes: ["Chocolate", "Huevos", "Harina", "Mantequilla", "Azúcar", "Avellanas"],
+    historia: "Una receta familiar transmitida por generaciones, perfeccionada con técnicas modernas de pastelería.",
   },
   {
     codigo: "TC002",
@@ -21,6 +24,9 @@ const productosData = [
       "Una mezcla de frutas frescas y crema chantilly sobre un suave bizcocho de vainilla, ideal para celebraciones.",
     imagen: "img/torta-cuadrada-frutas-crema-chantilly.jpg",
     icono: "fa-solid fa-birthday-cake",
+    cantidadPersonas: "8-10 personas",
+    ingredientes: ["Frutas frescas", "Crema chantilly", "Bizcocho de vainilla", "Azúcar"],
+    historia: "Inspirada en los jardines de frutas de la región, esta torta celebra la frescura de cada temporada.",
   },
 
   // Tortas Circulares
@@ -33,6 +39,9 @@ const productosData = [
       "Bizcocho de vainilla clásico relleno con crema pastelera y cubierto con un glaseado dulce, perfecto para cualquier ocasión.",
     imagen: "img/torta-circular-vainilla.jpg",
     icono: "fa-solid fa-birthday-cake",
+    cantidadPersonas: "6-8 personas",
+    ingredientes: ["Vainilla", "Crema pastelera", "Huevos", "Harina", "Mantequilla"],
+    historia: "El clásico que nunca pasa de moda, elaborado con vainilla natural de Madagascar.",
   },
   {
     codigo: "TT002",
@@ -43,6 +52,9 @@ const productosData = [
       "Torta tradicional chilena con manjar y nueces, un deleite para los amantes de los sabores dulces y clásicos.",
     imagen: "img/torta-circular-manjar.jpg",
     icono: "fa-solid fa-birthday-cake",
+    cantidadPersonas: "6-8 personas",
+    ingredientes: ["Manjar", "Nueces", "Bizcocho", "Crema"],
+    historia: "Una tradición chilena que honra nuestras raíces, con manjar casero preparado diariamente.",
   },
 
   // Postres Individuales
@@ -55,6 +67,9 @@ const productosData = [
       "Postre individual cremoso y suave, hecho con chocolate de alta calidad, ideal para los amantes del chocolate.",
     imagen: "img/mousse-chocolate-cremoso-individual.jpg",
     icono: "fa-solid fa-ice-cream",
+    cantidadPersonas: "1 persona",
+    ingredientes: ["Chocolate belga", "Crema", "Huevos", "Azúcar"],
+    historia: "Inspirado en las técnicas francesas, nuestro mousse es una experiencia de puro chocolate.",
   },
   {
     codigo: "PI002",
@@ -65,6 +80,9 @@ const productosData = [
       "Un postre italiano individual con capas de café, mascarpone y cacao, perfecto para finalizar cualquier comida.",
     imagen: "img/tiramisu-italiano-cafe-mascarpone.jpg",
     icono: "fa-solid fa-ice-cream",
+    cantidadPersonas: "1 persona",
+    ingredientes: ["Mascarpone", "Café espresso", "Bizcochos", "Cacao", "Licor"],
+    historia: "Directamente desde Italia, preparado con café espresso auténtico y mascarpone importado.",
   },
 
   // Productos Sin Azúcar
@@ -76,6 +94,9 @@ const productosData = [
     descripcion: "Torta ligera y deliciosa, endulzada naturalmente, ideal para quienes buscan opciones más saludables.",
     imagen: "img/torta-naranja-sin-azucar-saludable.jpg",
     icono: "fa-solid fa-leaf",
+    cantidadPersonas: "8-10 personas",
+    ingredientes: ["Naranjas frescas", "Stevia", "Harina integral", "Aceite de coco"],
+    historia: "Desarrollada para nuestros clientes que cuidan su salud sin renunciar al sabor.",
   },
   {
     codigo: "PSA002",
@@ -85,6 +106,9 @@ const productosData = [
     descripcion: "Suave y cremoso, este cheesecake es una opción perfecta para disfrutar sin culpa.",
     imagen: "img/cheesecake.jpg",
     icono: "fa-solid fa-leaf",
+    cantidadPersonas: "6-8 personas",
+    ingredientes: ["Queso crema", "Stevia", "Galletas integrales", "Frutas del bosque"],
+    historia: "Una versión saludable del clásico americano, sin comprometer la textura cremosa.",
   },
 
   // Pastelería Tradicional
@@ -96,6 +120,9 @@ const productosData = [
     descripcion: "Pastelería tradicional rellena de manzanas especiadas, perfecta para un dulce desayuno o merienda.",
     imagen: "img/empanadas-manzana.jpg",
     icono: "fa-solid fa-bread-slice",
+    cantidadPersonas: "1 persona",
+    ingredientes: ["Manzanas", "Canela", "Masa hojaldre", "Azúcar morena"],
+    historia: "Receta tradicional europea adaptada con manzanas locales de la región.",
   },
   {
     codigo: "PT002",
@@ -106,6 +133,9 @@ const productosData = [
       "Tradicional tarta española hecha con almendras, azúcar, y huevos, una delicia para los amantes de los postres clásicos.",
     imagen: "img/tarta-santiago-almendras-espa-ola.jpg",
     icono: "fa-solid fa-bread-slice",
+    cantidadPersonas: "4-6 personas",
+    ingredientes: ["Almendras", "Huevos", "Azúcar", "Limón"],
+    historia: "Auténtica receta española del Camino de Santiago, con almendras tostadas artesanalmente.",
   },
 
   // Productos Sin Gluten
@@ -118,6 +148,9 @@ const productosData = [
       "Rico y denso, este brownie es perfecto para quienes necesitan evitar el gluten sin sacrificar el sabor.",
     imagen: "img/brownie-sin-gluten-denso-chocolate.jpg",
     icono: "fa-solid fa-wheat-awn-circle-exclamation",
+    cantidadPersonas: "2-3 personas",
+    ingredientes: ["Harina de almendras", "Chocolate", "Huevos", "Mantequilla"],
+    historia: "Desarrollado especialmente para celíacos, manteniendo toda la intensidad del chocolate.",
   },
   {
     codigo: "PG002",
@@ -127,6 +160,9 @@ const productosData = [
     descripcion: "Suave y esponjoso, ideal para sándwiches o para acompañar cualquier comida.",
     imagen: "img/pan-sin-gluten-esponjoso.jpg",
     icono: "fa-solid fa-wheat-awn-circle-exclamation",
+    cantidadPersonas: "4-6 porciones",
+    ingredientes: ["Harina de arroz", "Almidón de maíz", "Levadura", "Huevos"],
+    historia: "Años de investigación nos llevaron a crear este pan con la textura perfecta.",
   },
 
   // Productos Vegana
@@ -138,6 +174,9 @@ const productosData = [
     descripcion: "Torta de chocolate húmeda y deliciosa, hecha sin productos de origen animal, perfecta para veganos.",
     imagen: "img/torta-vegana-chocolate-sin-productos-animales.jpg",
     icono: "fa-solid fa-seedling",
+    cantidadPersonas: "8-10 personas",
+    ingredientes: ["Chocolate vegano", "Leche de almendras", "Harina", "Aceite de coco"],
+    historia: "Creada con amor por el planeta y los animales, sin comprometer el sabor auténtico.",
   },
   {
     codigo: "PV002",
@@ -147,6 +186,9 @@ const productosData = [
     descripcion: "Crujientes y sabrosas, estas galletas son una excelente opción para un snack saludable y vegano.",
     imagen: "img/galletas-veganas-avena-crujientes.jpg",
     icono: "fa-solid fa-seedling",
+    cantidadPersonas: "6-8 galletas",
+    ingredientes: ["Avena", "Harina integral", "Aceite de coco", "Jarabe de arce"],
+    historia: "Perfectas para acompañar tu té o café, elaboradas con ingredientes 100% naturales.",
   },
 
   // Tortas Especiales
@@ -158,6 +200,9 @@ const productosData = [
     descripcion: "Diseñada especialmente para celebraciones, personalizable con decoraciones y mensajes únicos.",
     imagen: "img/torta-cumplea-os-especial-decorada-personalizada.jpg",
     icono: "fa-solid fa-gift",
+    cantidadPersonas: "10-12 personas",
+    ingredientes: ["Bizcocho a elección", "Crema personalizada", "Decoraciones comestibles"],
+    historia: "Cada torta es única, diseñada especialmente para hacer inolvidable tu celebración.",
   },
   {
     codigo: "TE002",
@@ -167,17 +212,20 @@ const productosData = [
     descripcion: "Elegante y deliciosa, esta torta está diseñada para ser el centro de atención en cualquier boda.",
     imagen: "img/torta-boda-especial.jpg",
     icono: "fa-solid fa-gift",
+    cantidadPersonas: "15-20 personas",
+    ingredientes: ["Bizcocho premium", "Fondant", "Flores comestibles", "Decoraciones personalizadas"],
+    historia: "Creaciones únicas para el día más especial, con diseños exclusivos para cada pareja.",
   },
 ]
 const categorias = {
-    "tortas-cuadradas": "Tortas Cuadradas",
-    "tortas-circulares": "Tortas Circulares",
-    "postres-individuales": "Postres Individuales",
-    "sin-azucar": "Sin Azúcar",
-    tradicional: "Tradicional",
-    "sin-gluten": "Sin Gluten",
-    vegana: "Vegana",
-    especiales: "Especiales",
+  "tortas-cuadradas": "Tortas Cuadradas",
+  "tortas-circulares": "Tortas Circulares",
+  "postres-individuales": "Postres Individuales",
+  "sin-azucar": "Sin Azúcar",
+  tradicional: "Tradicional",
+  "sin-gluten": "Sin Gluten",
+  vegana: "Vegana",
+  especiales: "Especiales",
 }
 
 // Elementos del DOM
@@ -185,9 +233,6 @@ const productosGrid = document.getElementById("productos-grid")
 const buscarInput = document.getElementById("buscar-producto")
 const filtrosBtns = document.querySelectorAll(".filtro-btn")
 const noProductos = document.getElementById("no-productos")
-const modalOverlay = document.getElementById("modal-overlay")
-const modalClose = document.getElementById("modal-close")
-const modalBody = document.getElementById("modal-body")
 const cartCount = document.querySelector(".cart-count")
 
 // Funciones auxiliares
@@ -210,9 +255,10 @@ document.addEventListener("DOMContentLoaded", () => {
 // Configurar event listeners
 function configurarEventListeners() {
   // Búsqueda
-  buscarInput.addEventListener("input", filtrarProductos)
+  if (buscarInput) {
+    buscarInput.addEventListener("input", filtrarProductos)
+  }
 
-  // Filtros de categoría
   filtrosBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
       // Remover clase active de todos los botones
@@ -222,21 +268,6 @@ function configurarEventListeners() {
 
       filtrarProductos()
     })
-  })
-
-  // Modal
-  modalClose.addEventListener("click", cerrarModal)
-  modalOverlay.addEventListener("click", (e) => {
-    if (e.target === modalOverlay) {
-      cerrarModal()
-    }
-  })
-
-  // Cerrar modal con ESC
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      cerrarModal()
-    }
   })
 }
 
@@ -254,17 +285,17 @@ function mostrarProductos(productos) {
   productosGrid.innerHTML = productos
     .map(
       (producto) => `
-        <div class="producto-card" onclick="abrirModal('${producto.codigo}')">
-            <div class="producto-imagen">
+        <div class="producto-card">
+            <div class="producto-imagen" onclick="irADetalle('${producto.codigo}')">
                 <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy">
                 <div class="categoria-badge">${obtenerNombreCategoria(producto.categoria)}</div>
             </div>
             <div class="producto-info">
-                <h3 class="producto-nombre">${producto.nombre}</h3>
+                <h3 class="producto-nombre" onclick="irADetalle('${producto.codigo}')">${producto.nombre}</h3>
                 <p class="producto-descripcion">${producto.descripcion}</p>
                 <div class="producto-footer">
                     <span class="producto-precio">${formatearPrecio(producto.precio)}</span>
-                    <button class="btn-agregar" onclick="event.stopPropagation(); agregarAlCarrito('${producto.codigo}')">
+                    <button class="btn-agregar-catalogo" onclick="agregarAlCarrito('${producto.codigo}')">
                         <i class="fa-solid fa-cart-plus"></i>
                         Agregar
                     </button>
@@ -276,9 +307,8 @@ function mostrarProductos(productos) {
     .join("")
 }
 
-// Filtrar productos
 function filtrarProductos() {
-  const textoBusqueda = buscarInput.value.toLowerCase().trim()
+  const textoBusqueda = buscarInput ? buscarInput.value.toLowerCase().trim() : ""
   const categoriaActiva = document.querySelector(".filtro-btn.active").dataset.categoria
 
   let productosFiltrados = [...productosData]
@@ -302,94 +332,9 @@ function filtrarProductos() {
   mostrarProductos(productosActuales)
 }
 
-// Abrir modal con detalles del producto
-function abrirModal(codigoProducto) {
-  const producto = productosData.find((p) => p.codigo === codigoProducto)
-  if (!producto) return
-
-  modalBody.innerHTML = `
-        <div class="modal-producto">
-            <div class="modal-imagen">
-                <img src="${producto.imagen}" alt="${producto.nombre}">
-                <div class="categoria-badge">${obtenerNombreCategoria(producto.categoria)}</div>
-            </div>
-            <div class="modal-info">
-                <h2 class="pacifico-regular" style="color: var(--color-acento-cafe); margin-bottom: 15px;">
-                    ${producto.nombre}
-                </h2>
-                
-                <div class="modal-detalles" style="margin-bottom: 20px;">
-                    <div class="detalle-item">
-                        <strong>Código:</strong> ${producto.codigo}
-                    </div>
-                    <div class="detalle-item">
-                        <strong>Categoría:</strong> ${obtenerNombreCategoria(producto.categoria)}
-                    </div>
-                    <div class="detalle-item">
-                        <strong>Cantidad de personas:</strong> ${producto.cantidadPersonas}
-                    </div>
-                </div>
-
-                <div class="modal-descripcion" style="margin-bottom: 20px;">
-                    <h4 style="color: var(--color-acento-cafe); margin-bottom: 10px;">Descripción</h4>
-                    <p style="color: var(--color-letra-gris); line-height: 1.6;">
-                        ${producto.descripcion}
-                    </p>
-                </div>
-
-                <div class="modal-ingredientes" style="margin-bottom: 20px;">
-                    <h4 style="color: var(--color-acento-cafe); margin-bottom: 10px;">Ingredientes</h4>
-                    <div class="ingredientes-lista" style="display: flex; flex-wrap: wrap; gap: 8px;">
-                        ${producto.ingredientes
-                          .map(
-                            (ingrediente) =>
-                              `<span class="ingrediente-tag" style="background: var(--color-acento-rosa); color: white; padding: 4px 8px; border-radius: 15px; font-size: 0.85rem;">${ingrediente}</span>`,
-                          )
-                          .join("")}
-                    </div>
-                </div>
-
-                <div class="modal-historia" style="margin-bottom: 25px;">
-                    <h4 style="color: var(--color-acento-cafe); margin-bottom: 10px;">Historia</h4>
-                    <p style="color: var(--color-letra-gris); line-height: 1.6; font-style: italic;">
-                        ${producto.historia}
-                    </p>
-                </div>
-
-                <div class="personalizacion-section" style="margin-bottom: 25px; padding: 15px; background: #f9f9f9; border-radius: 10px;">
-                    <h4 style="color: var(--color-acento-cafe); margin-bottom: 10px;">Personalización</h4>
-                    <label for="cantidad-personas" style="display: block; margin-bottom: 5px; font-weight: 600;">Ajustar cantidad de personas:</label>
-                    <select id="cantidad-personas" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 10px;">
-                        <option value="estandar">Tamaño estándar (${producto.cantidadPersonas})</option>
-                        <option value="pequeno">Tamaño pequeño (50% menos)</option>
-                        <option value="grande">Tamaño grande (50% más)</option>
-                        <option value="extra-grande">Tamaño extra grande (100% más)</option>
-                    </select>
-                    <label for="mensaje-especial" style="display: block; margin-bottom: 5px; font-weight: 600;">Mensaje especial (opcional):</label>
-                    <input type="text" id="mensaje-especial" placeholder="Ej: Feliz Cumpleaños María" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
-                </div>
-
-                <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 2px solid var(--color-acento-rosa);">
-                    <span class="modal-precio" style="font-size: 2rem; font-weight: 700; color: var(--color-acento-cafe);">
-                        ${formatearPrecio(producto.precio)}
-                    </span>
-                    <button class="btn-agregar" onclick="agregarAlCarritoPersonalizado('${producto.codigo}'); cerrarModal();" style="padding: 15px 30px; font-size: 1.1rem;">
-                        <i class="fa-solid fa-cart-plus"></i>
-                        Agregar al Carrito
-                    </button>
-                </div>
-            </div>
-        </div>
-    `
-
-  modalOverlay.classList.add("active")
-  document.body.style.overflow = "hidden"
-}
-
-// Cerrar modal
-function cerrarModal() {
-  modalOverlay.classList.remove("active")
-  document.body.style.overflow = "auto"
+// Navegar a la página de detalles del producto
+function irADetalle(codigoProducto) {
+  window.location.href = `detalle-producto.html?codigo=${codigoProducto}`
 }
 
 // Agregar producto al carrito
@@ -717,6 +662,8 @@ function mostrarNotificacion(mensaje) {
 
 // Función para limpiar filtros (útil para debugging)
 function limpiarFiltros() {
-  buscarInput.value = ""
+  if (buscarInput) {
+    buscarInput.value = ""
+  }
   document.querySelector('.filtro-btn[data-categoria="todas"]').click()
 }
